@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad Crochet - Tu Universo de Crochet</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.js"></script>
+
+    <style>
+        /* Estilos personalizados adaptados */
+        /* Importación de fuente Inter, aunque ya se cargó por CDN arriba, se mantiene por consistencia */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+            color: #d0d0d0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0; /* Asegura que no haya márgenes por defecto en el body */
+            padding: 0; /* Asegura que no haya padding por defecto en el body */
+        }
+
+        .font-pacifico {
+            font-family: 'Pacifico', cursive;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        .section-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos de scrollbar personalizados para navegadores webkit */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #C026D3; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a824b3; }
+        
+        /* Scrollbar horizontal para la barra de navegación */
+        .custom-scrollbar-horizontal::-webkit-scrollbar {
+            height: 6px; /* Altura de la barra de desplazamiento */
+        }
+        .custom-scrollbar-horizontal::-webkit-scrollbar-track {
+            background: #2a2a2a; /* Fondo de la pista */
+            border-radius: 3px;
+        }
+        .custom-scrollbar-horizontal::-webkit-scrollbar-thumb {
+            background: #C026D3; /* Color del "pulgar" (el que se arrastra) */
+            border-radius: 3px;
+        }
+        .custom-scrollbar-horizontal::-webkit-scrollbar-thumb:hover {
+            background: #a824b3; /* Color al pasar el ratón */
+        }
+
+
+        .card {
+            background-color: #1a1a1a;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid #2a2a2a;
+        }
+
+        .btn {
+            background-color: #C026D3;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: none;
+            flex-shrink: 0;
+        }
+        .btn:hover:not(:disabled) {
+            background-color: #a824b3;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(192, 38, 211, 0.7), 0 0 30px rgba(192, 38, 211, 0.5);
+        }
+        .btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .btn-danger {
+            background-color: #dc2626; /* red-600 */
+        }
+        .btn-danger:hover:not(:disabled) {
+            background-color: #b91c1c; /* red-700 */
+        }
+
+        .nav-btn.active {
+            background-color: #a824b3;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(192, 38, 211, 0.7);
+        }
+        
+        .btn-green { background-color: #16a34a; }
+        .btn-green:hover:not(:disabled) {
+            background-color: #15803d;
+            box-shadow: 0 0 15px rgba(22, 163, 74, 0.7), 0 0 30px rgba(22, 163, 74, 0.5);
+        }
+         .nav-btn-green.active {
+            background-color: #15803d;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(22, 163, 74, 0.7);
+        }
+
+        .text-gradient {
+            background-image: linear-gradient(to right, #f472b6, #c026d3, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        #back-to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            display: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+         #back-to-top-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px rgba(192, 38, 211, 0.8), 0 8px 15px rgba(0,0,0,0.6);
+        }
+        
+        /* Welcome Overlay */
+#welcome-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: none; /* Oculto por defecto para evitar pantallazo */
+    justify-content: center; align-items: center;
+    z-index: 1000; flex-direction: column; text-align: center;
+    padding: 20px; transition: opacity 0.5s ease-out;
+}
+
+        #welcome-overlay.fade-out { opacity: 0; pointer-events: none; }
+        #welcome-overlay input {
+            background-color: #2a2a2a; border: 1px solid #4a4a4a; border-radius: 10px;
+            padding: 12px 20px; color: #d0d0d0; font-size: 1.1rem;
+            width: 90%; max-width: 350px; margin-bottom: 20px; text-align: center;
+            transition: all 0.3s ease;
+        }
+        #welcome-overlay input:focus {
+            outline: none; border-color: #C026D3;
+            box-shadow: 0 0 0 3px rgba(192, 38, 211, 0.4);
+        }
+        
+        /* Main App Content visibility */
+        #main-app-content { transition: opacity 0.5s ease-out; }
+        #main-app-content.hidden-content { opacity: 0; pointer-events: none; }
+        #main-app-content.visible-content { opacity: 1; pointer-events: auto; }
+
+        /* Accordion styles */
+        .accordion-item {
+            background-color: #2a2a2a;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #3a3a3a;
+        }
+        .accordion-button {
+            width: 100%;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #e0e0e0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        .accordion-button:hover {
+            background-color: #333;
+        }
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            border-top: 1px solid #3a3a3a;
+        }
+        .accordion-content > div {
+             padding: 1rem 0;
+        }
+        .accordion-button .accordion-icon {
+            transition: transform 0.4s ease;
+        }
+        .accordion-button.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Quiz styles */
+        .quiz-container { 
+            background-color: #1f1f1f; 
+            border-radius: 12px; 
+            margin-top: 20px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+            border: 1px solid #3a3a3a;
+            
+            /* Styles for transition */
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden; /* Important for initial hidden state and transitions */
+            padding: 0 24px; /* Apply horizontal padding always, vertical padding transitions */
+            transition: opacity 0.5s ease-out, max-height 0.5s ease-out, padding 0.5s ease-out;
+            display: block; /* Important: Keep it block for transitions */
+        }
+        .quiz-container.active-quiz {
+            opacity: 1;
+            max-height: 9999px; /* Aumentado significativamente para asegurar que todo el contenido sea visible */
+            padding-top: 24px; /* Vertical padding when active */
+            padding-bottom: 24px; /* Vertical padding when active */
+            overflow-y: auto; /* Permite desplazamiento vertical si el contenido es demasiado largo */
+        }
+        .quiz-container.closing-quiz {
+            opacity: 0;
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .quiz-question { font-size: 1.1rem; font-weight: 600; color: #d0d0d0; margin-bottom: 15px; }
+        .quiz-option { display: block; margin-bottom: 10px; cursor: pointer; padding: 12px; border-radius: 8px; transition: background-color 0.2s ease; background-color: #2a2a2a;}
+        .quiz-option:hover { background-color: #3a3a3a; }
+        .quiz-option input[type="radio"] { margin-right: 10px; accent-color: #C026D3; transform: scale(1.2); }
+        .quiz-result { margin-top: 20px; font-weight: 600; font-size: 1.1rem; }
+        .best-score-display { color: #e0e0e0; font-size: 0.9rem; transition: color 0.3s ease; }
+
+        /* Video Watched Button */
+        .watched-btn {
+            background-color: #3a3a3a;
+            color: #9ca3af;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .watched-btn:hover:not(:disabled) {
+            background-color: #4a4a4a;
+            color: #e0e0e0;
+        }
+        .watched-btn.completed {
+            background-color: #16a34a;
+            color: white;
+            box-shadow: 0 0 10px rgba(22, 163, 74, 0.7);
+        }
+
+        /* XP Bar styles */
+        .xp-bar-container {
+            background-color: #3a3a3a;
+            border-radius: 9999px;
+            overflow: hidden;
+            height: 12px;
+        }
+        .xp-bar {
+            background-image: linear-gradient(to right, #f472b6, #c026d3);
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.5s ease-out;
+        }
+        
+        /* New Gallery and Creations Styles */
+        .file-input-label {
+            border: 2px dashed #4a4a4a;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s, background-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .file-input-label:hover {
+            border-color: #C026D3;
+            background-color: #1f1f1f;
+        }
+        #image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .gallery-image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background-color: #2a2a2a;
+            border: 2px solid transparent;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .gallery-image {
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-image-card:hover .gallery-image {
+            transform: scale(1.1);
+        }
+        .gallery-icon {
+            position: absolute;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            text-shadow: 0 0 5px rgba(0,0,0,0.7);
+        }
+        .favorite-star {
+            top: 12px;
+            right: 12px;
+            color: #6b7280;
+        }
+        .favorite-star.favorited {
+            color: #facc15; /* yellow-400 */
+            transform: scale(1.2);
+        }
+        .delete-trash {
+            bottom: 12px;
+            right: 12px;
+            color: #6b7280;
+        }
+        .delete-trash:hover {
+            color: #ef4444; /* red-500 */
+            transform: scale(1.2);
+        }
+        .favorite-glow {
+            border-color: #facc15;
+            box-shadow: 0 0 15px 3px rgba(250, 204, 21, 0.5);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #modal-image {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+        #modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+        .confirmation-modal-content {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #4a4a4a;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        /* Subtle Welcome Message & Loading Screen */
+        #subtle-welcome-message {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; /* Make it cover the whole screen for loading */
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-out;
+        }
+        #subtle-welcome-message.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        #subtle-welcome-message.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loading-spinner {
+            font-size: 3rem;
+            color: #f472b6; /* pink-400 */
+            animation: spin 1.5s linear infinite;
+            margin-top: 20px; /* Space between text and spinner */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="selection:bg-pink-500 selection:text-white">
+    
+    <div id="welcome-overlay">
+        <h2 class="text-gradient font-bold mb-6 drop-shadow-lg text-4xl" id="welcome-overlay-title">¡Bienvenida a Comunidad Crochet!</h2>
+        <p class="text-gray-300 text-lg mb-6 max-w-md" id="welcome-overlay-text">¡Bienvenida a nuestra familia de tejedoras! ¿Cómo te llamas?</p>
+        <input type="text" id="user-name-input" placeholder="Introduce tu nombre" aria-label="Introduce tu nombre">
+        <button id="start-course-btn" class="btn">Empezar a Tejer</button>
+    </div>
+
+    <div id="subtle-welcome-message">
+        <p class="text-gradient text-3xl sm:text-4xl font-bold mb-4 drop-shadow-lg" id="subtle-welcome-text"></p>
+        <i class="fas fa-spinner loading-spinner"></i>
+    </div>
+
+    <div id="image-modal" class="modal-overlay">
+        <span id="modal-close-btn">×</span>
+        <img id="modal-image" src="" alt="Vista ampliada del tejido">
+    </div>
+
+    <div id="confirmation-modal" class="modal-overlay">
+        <div class="confirmation-modal-content">
+            <p id="confirmation-message" class="text-lg mb-6"></p>
+            <div class="flex justify-center gap-4">
+                <button id="confirm-btn" class="btn btn-danger">Eliminar</button>
+                <button id="cancel-btn" class="btn bg-gray-600">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-app-content" class="hidden-content">
+        <div class="container min-h-screen flex flex-col">
+            
+            <header class="text-center mb-6 p-4 bg-gradient-to-br from-gray-900 to-black rounded-b-3xl shadow-xl border-b border-gray-700">
+                <h1 class="font-pacifico text-4xl sm:text-5xl font-extrabold text-gradient mb-2 drop-shadow-lg">
+                    Comunidad Crochet
+                </h1>
+                <p class="text-md sm:text-lg text-gray-400 italic font-light">
+                    Tejiendo sueños, un punto a la vez
+                </p>
+                <div class="text-pink-400 text-3xl mt-3 flex justify-center space-x-4">
+                    <i class="fas fa-heart transform hover:scale-110 transition-transform"></i>
+                    <i class="fas fa-cut transform hover:scale-110 transition-transform"></i>
+                    <i class="fas fa-yarn transform hover:scale-110 transition-transform"></i>
+                </div>
+            </header>
+
+            <nav class="mb-6 p-2 bg-gray-900 rounded-xl shadow-lg flex flex-wrap justify-center gap-2 md:gap-3 overflow-x-auto custom-scrollbar-horizontal">
+                <button class="btn nav-btn" data-section="inicio"><i class="fas fa-home mr-2"></i>Inicio</button>
+                <button class="btn nav-btn" data-section="niveles"><i class="fas fa-layer-group mr-2"></i>Niveles</button>
+                <button class="btn nav-btn" data-section="creaciones"><i class="fas fa-plus-square mr-2"></i>Creaciones</button>
+                <button class="btn nav-btn" data-section="galeria"><i class="fas fa-images mr-2"></i>Galería</button>
+                <button class="btn nav-btn" data-section="glosario"><i class="fas fa-book-open mr-2"></i>Glosario</button>
+                <button class="btn nav-btn" data-section="tutoriales"><i class="fas fa-video mr-2"></i>Videos Tutoriales</button>
+                <button class="btn nav-btn" data-section="herramientas"><i class="fas fa-tools mr-2"></i>Herramientas</button>
+                <button class="btn nav-btn nav-btn-green" data-section="amigurumi"><i class="fas fa-frog mr-2"></i>Amigurumi</button>
+            </nav>
+
+            <main class="flex-grow p-2">
+
+                <section id="inicio" class="section-content active">
+                    <h2 class="text-3xl font-bold mb-4 text-gradient"><span id="welcome-message">¡Bienvenida a Comunidad Crochet!</span></h2>
+                    
+                    <div id="user-profile-card" class="card mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span id="user-level-title" class="font-bold text-lg text-gray-200"></span>
+                            <span id="user-streak" class="flex items-center text-yellow-400 font-bold hidden"><i class="fas fa-fire mr-1"></i> 0</span>
+                        </div>
+                        <div class="xp-bar-container mb-1">
+                            <div id="user-xp-bar" class="xp-bar" style="width: 0%;"></div>
+                        </div>
+                            <div class="flex justify-between items-center text-xs text-gray-400">
+                            <span>Progreso</span>
+                            <span id="user-xp-text">0 / 100 XP</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fas fa-calendar-day mr-3 text-pink-400"></i>Retos Diarios</h3>
+                        <div id="daily-challenges-list" class="space-y-3">
+                            </div>
+                    </div>
+                </section>
+                
+                <section id="niveles" class="section-content card">
+                    <h2 class="text-3xl font-bold mb-6 text-gradient">Hoja de Ruta del Tejedor</h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">Aprende y domina cada técnica en orden para avanzar en tu camino. Al final de cada nivel, ¡pon a prueba tus conocimientos con un cuestionario!</p>
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-semibold mb-4 text-pink-300 border-b-2 border-pink-500/30 pb-2"><i class="fas fa-seedling mr-2"></i>Nivel Principiante</h3>
+                        <div class="accordion-container" id="principiante-accordion"></div>
+                        <button class="btn mt-6 quiz-btn" data-quiz-id="principiante">Cuestionario Principiante</button>
+                        <p class="best-score-display mt-2" id="best-score-principiante"></p>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-semibold mb-4 text-purple-300 border-b-2 border-purple-500/30 pb-2"><i class="fas fa-graduation-cap mr-2"></i>Nivel Intermedio</h3>
+                        <div class="accordion-container" id="intermedio-accordion"></div>
+                        <button class="btn mt-6 quiz-btn" data-quiz-id="intermedio">Cuestionario Intermedio</button>
+                        <p class="best-score-display mt-2" id="best-score-intermedio"></p>
+                    </div>
+                    <div>
+                        <h3 class="2xl font-semibold mb-4 text-teal-300 border-b-2 border-teal-500/30 pb-2"><i class="fas fa-crown mr-2"></i>Nivel Avanzado</h3>
+                        <div class="accordion-container" id="avanzado-accordion"></div>
+                        <button class="btn mt-6 quiz-btn" data-quiz-id="avanzado">Cuestionario Avanzado</button>
+                        <p class="best-score-display mt-2" id="best-score-avanzado"></p>
+                    </div>
+                </section>
+
+                <section id="creaciones" class="section-content card">
+                    <h2 class="text-3xl font-bold mb-6 text-gradient">Sube tu Creación</h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">¡Muestra tu arte! Sube una foto de tu último tejido para añadirla a tu galería personal y completar tu reto diario.</p>
+                    <div class="flex flex-col items-center">
+                        <input type="file" id="image-input" class="hidden" accept="image/*"> <label for="image-input" class="file-input-label w-full max-w-sm">
+                            <i class="fas fa-camera text-4xl mb-3 text-gray-400"></i>
+                            <p class="font-semibold text-gray-200">Toca para seleccionar una imagen</p> <p class="text-sm text-gray-500">o sube un archivo</p>
+                        </label>
+                        <img id="image-preview" class="hidden rounded-lg mt-4" src="" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 250px;">
+                        <input id="image-title-input" type="text" placeholder="Ponle un título a tu creación..." class="w-full max-w-sm mt-4 bg-gray-800 border border-gray-700 rounded-lg p-3 focus:ring-2 focus:ring-pink-500 focus:outline-none">
+                        <button id="upload-image-btn" class="btn w-full max-w-sm mt-4" disabled>Subir Creación</button>
+                    </div>
+                </section>
+
+                <section id="galeria" class="section-content card">
+                    <h2 class="text-3xl font-bold mb-6 text-gradient">Tu Galería de Tejidos</h2>
+                    <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                        </div>
+                    <p id="gallery-empty-message" class="text-center text-gray-500 hidden py-10">Aún no has subido ninguna creación. ¡Ve a la sección "Creaciones" para empezar!</p>
+                </section>
+
+                <section id="glosario" class="section-content card">
+                    <h2 class="text-3xl font-bold mb-6 text-gradient">Glosario de Crochet</h2>
+                    <p class="text-gray-300 leading-relaxed mb-4">Tu diccionario de referencia para abreviaturas y términos. Explora y aprende el lenguaje del crochet.</p>
+                    <div id="glossary-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                </section>
+
+                <section id="tutoriales" class="section-content card">
+                    <h2 class="text-3xl font-bold mb-6 text-gradient">Academia de Videos Tutoriales</h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">A veces, ver es creer. Aquí tienes una colección de videos organizados por nivel para reforzar visualmente lo que aprendes en la sección de "Niveles". Marca los videos que ya viste para seguir tu progreso.</p>
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-semibold mb-4 text-pink-300 border-b-2 border-pink-500/30 pb-2"><i class="fas fa-seedling mr-2"></i>Videos para Principiantes</h3>
+                        <div id="principiante-video-list" class="grid grid-cols-1 md:grid-cols-2 gap-y-8 -mx-6 md:mx-0 md:gap-6"></div>
+                    </div>
+                    <div class="mb-10">
+                        <h3 class="text-2xl font-semibold mb-4 text-purple-300 border-b-2 border-purple-500/30 pb-2"><i class="fas fa-graduation-cap mr-2"></i>Videos de Nivel Intermedio</h3>
+                        <div id="intermedio-video-list" class="grid grid-cols-1 md:grid-cols-2 gap-y-8 -mx-6 md:mx-0 md:gap-6"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4 text-teal-300 border-b-2 border-teal-500/30 pb-2"><i class="fas fa-crown mr-2"></i>Videos para Expertos</h3>
+                        <div id="avanzado-video-list" class="grid grid-cols-1 md:grid-cols-2 gap-y-8 -mx-6 md:mx-0 md:gap-6"></div>
+                    </div>
+                </section>
+                
+                <section id="herramientas" class="section-content card">
+                     <h2 class="text-3xl font-bold mb-6 text-gradient">El Kit de la Tejedora</h2>
+                     <p class="text-gray-300 leading-relaxed mb-6">Conocer tus herramientas es clave. Aquí exploramos los materiales que te acompañarán en cada proyecto, desde lo indispensable hasta lo que te hará la vida más fácil.</p>
+                     <div class="mb-10">
+                         <h3 class="text-2xl font-semibold mb-4 text-pink-300 border-b-2 border-pink-500/30 pb-2"><i class="fas fa-star mr-2"></i>Herramientas Esenciales</h3>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                             <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-pink-400"><i class="fas fa-hammer mr-2"></i>Ganchillos (Agujas)</h4><p class="text-gray-400">Tu varita mágica. Vienen en distintos materiales (aluminio, bambú, ergonómicos) y tamaños (en mm). Necesitarás varios tamaños para adaptarte a diferentes grosores de hilo.</p></div>
+                             <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-pink-400"><i class="fas fa-yarn mr-2"></i>Hilos y Lanas</h4><p class="text-gray-400">El alma de tu proyecto. Algodón para amigurumis, merino para prendas suaves, acrílico para mantas duraderas. Cada fibra tiene un propósito, textura y caída.</p></div>
+                              <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-pink-400"><i class="fas fa-scissors mr-2"></i>Tijeras</h4><p class="text-gray-400">Indispensables para un acabado limpio. Unas tijeras pequeñas y bien afiladas, dedicadas solo a tus lanas, son una inversión que vale la pena.</p></div>
+                             <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-pink-400"><i class="fas fa-map-pin mr-2"></i>Marcadores de Puntos</h4><p class="text-gray-400">Tus mejores amigos para no perderte. Estos pequeños clips o aros de plástico marcan el inicio de una vuelta, un punto importante o un lugar donde hacer un aumento.</p></div>
+                              <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-pink-400"><i class="fas fa-ruler mr-2"></i>Cinta Métrica</h4><p class="text-gray-400">Esencial para que tus prendas tengan el tamaño correcto. Se usa para medir la muestra de tensión y las dimensiones de tu proyecto a medida que avanzas.</p></div>
+                              <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-pink-400"><i class="fas fa-needle mr-2 transform -rotate-45"></i>Aguja Lanera</h4><p class="text-gray-400">Una aguja de punta roma y ojo grande. No sirve para coser tela, sino para el paso final más importante: esconder las hebras sobrantes y unir piezas de forma invisible.</p></div>
+                         </div>
+                     </div>
+                          <div class="mb-10">
+                              <h3 class="text-2xl font-semibold mb-4 text-purple-300 border-b-2 border-purple-500/30 pb-2"><i class="fas fa-plus-circle mr-2"></i>Accesorios Útiles</h3>
+                              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                   <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-purple-400"><i class="fas fa-sync-alt mr-2"></i>Devanadora y Ovilladora</h4><p class="text-gray-400">Transforman las madejas de hilo en ovillos perfectos y fáciles de usar, evitando nudos y enredos. Un lujo que ahorra mucho tiempo y frustración.</p></div>
+                                   <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-purple-400"><i class="fas fa-th-large mr-2"></i>Bloqueadores</h4><p class="text-gray-400">Alfombrillas de espuma y alfileres en T que se usan para el proceso de bloqueo. Permiten estirar y fijar chales, mantas y prendas para que adquieran su forma definitiva.</p></div>
+                                   <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-purple-400"><i class="fas fa-stopwatch mr-2"></i>Contador de Vueltas</h4><p class="text-gray-400">Un pequeño dispositivo, manual o digital, que te ayuda a llevar la cuenta de las filas o vueltas que has tejido. Muy útil en proyectos largos y repetitivos.</p></div>
+                                   <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-purple-400"><i class="fas fa-ring mr-2"></i>Guía de Hilos</h4><p class="text-gray-400">Un anillo que se coloca en el dedo para guiar el hilo y mantener una tensión uniforme. Especialmente útil para quienes tejen con varios colores a la vez (Tapestry).</p></div>
+                             </div>
+                           </div>
+                           <div>
+                               <h3 class="text-2xl font-semibold mb-4 text-teal-300 border-b-2 border-teal-500/30 pb-2"><i class="fas fa-box-open mr-2"></i>Acabados y Proyectos Específicos</h3>
+                               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-teal-400"><i class="fas fa-eye mr-2"></i>Ojos de Seguridad</h4><p class="text-gray-400">Pequeños ojos de plástico con un cierre de seguridad. Son cruciales para dar vida y personalidad a los amigurumis y muñecos de forma segura, especialmente si son para niños.</p></div>
+                                    <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-teal-400"><i class="fas fa-fill-drip mr-2"></i>Relleno Sintético (Vellón)</h4><p class="text-gray-400">El alma de los amigurumis. Es una fibra de poliéster suave y esponjosa (guata o floca) que se usa para rellenar los muñecos y darles forma y volumen.</p></div>
+                                    <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-teal-400"><i class="fas fa-shopping-bag mr-2"></i>Bolsas de Labores</h4><p class="text-gray-400">Bolsas de tela o estuches diseñados para mantener tus proyectos en curso, hilos y herramientas organizados y limpios. Perfectas para tejer fuera de casa.</p></div>
+                                    <div class="card bg-gray-800"><h4 class="text-xl font-semibold mb-2 text-teal-400"><i class="fas fa-tags mr-2"></i>Etiquetas Personalizadas</h4><p class="text-gray-400">Etiquetas de cuero, madera o tela con tu marca ("Hecho a mano por..."). Le dan un toque final y profesional a tus creaciones, ideal si las vendes o regalas.</p></div>
+                               </div>
+                           </div>
+                </section>
+
+                <section id="amigurumi" class="section-content card text-center">
+                    <h2 class="text-3xl font-bold mb-4 text-gradient"><i class="fas fa-frog text-green-400 mr-2"></i>El Mágico Mundo del Amigurumi</h2>
+                    <p class="text-gray-300 leading-relaxed mb-6 max-w-3xl mx-auto">
+                        Si has llegado hasta aquí, es porque amas crear vida con tus propias manos. El Amigurumi es el arte japonés de tejer adorables muñecos. En esta app has aprendido todo lo necesario para empezar, pero si tu verdadera pasión son los amigurumis, tenemos algo especial para ti.
+                    </p>
+                    <div class="card bg-gray-800 my-8 p-6">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-200">Te presentamos: Comunidad Amigurumi</h3>
+                        <p class="text-gray-400 mb-6">Nuestra aplicación dedicada exclusivamente a los amantes de los amigurumis. ¡Todo lo que necesitas en un solo lugar!</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                           <div class="flex items-start space-x-3"><i class="fas fa-book-open text-2xl text-green-400 mt-1"></i><div><h4 class="font-bold text-gray-200">Cientos de Patrones Gratis</h4><p class="text-gray-400">Desde animales adorables hasta tus personajes favoritos, con guías detalladas.</p></div></div>
+                           <div class="flex items-start space-x-3"><i class="fas fa-users text-2xl text-green-400 mt-1"></i><div><h4 class="font-bold text-gray-200">Comunidad Apasionada</h4><p class="text-gray-400">Comparte tus creaciones, resuelve dudas y conoce a otros tejedores como tú.</p></div></div>
+                        </div>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.amigurumi2025" target="_blank" class="btn btn-green text-lg py-3 px-6 transform hover:scale-105"><i class="fab fa-google-play mr-2"></i>Descargar Comunidad Amigurumi GRATIS</a>
+                </section>
+
+            </main>
+
+            <button id="back-to-top-btn" class="btn"><i class="fas fa-arrow-up"></i></button>
+
+            <footer class="mt-8 text-center text-gray-600 text-xs p-4 bg-gray-900 rounded-t-xl shadow-inner border-t border-gray-700">
+                <p>© 2024 Comunidad Crochet. Todos los derechos reservados.</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- GLOBAL ELEMENTS ---
+            const mainAppContent = document.getElementById('main-app-content');
+            const welcomeMessageSpan = document.getElementById('welcome-message'); // This span is inside the main-app-content
+            const backToTopBtn = document.getElementById('back-to-top-btn');
+            
+            // Welcome Overlay & Loading Screen Elements
+            const welcomeOverlay = document.getElementById('welcome-overlay');
+            const userNameInput = document.getElementById('user-name-input');
+            const startCourseBtn = document.getElementById('start-course-btn');
+            const subtleWelcomeMessage = document.getElementById('subtle-welcome-message');
+            const subtleWelcomeText = document.getElementById('subtle-welcome-text');
+
+            // --- USER DATA MANAGEMENT ---
+            let userData = {};
+            const defaultUserData = {
+                name: '',
+                xp: 0,
+                creations: [],
+                bestScores: { principiante: 0, intermedio: 0, avanzado: 0 },
+                watchedVideos: [],
+                dailyChecks: {
+                    lastCheckDate: null,
+                    loggedIn: { done: false, claimed: false },
+                    videoWatched: { done: false, claimed: false },
+                    photoUploaded: { done: false, claimed: false },
+                },
+            };
+
+            function loadUserData() {
+                try {
+                    const savedData = localStorage.getItem('crochetUserData');
+                    if (savedData) {
+                        let parsedData = JSON.parse(savedData);
+                        userData = {
+                            ...defaultUserData,
+                            ...parsedData,
+                            dailyChecks: { ...defaultUserData.dailyChecks, ...(parsedData.dailyChecks || {}) },
+                            bestScores: { ...defaultUserData.bestScores, ...(parsedData.bestScores || {}) },
+                            creations: Array.isArray(parsedData.creations) ? parsedData.creations : [],
+                            watchedVideos: Array.isArray(parsedData.watchedVideos) ? parsedData.watchedVideos : []
+                        };
+                    } else {
+                        userData = JSON.parse(JSON.stringify(defaultUserData));
+                    }
+                } catch (error) {
+                    console.error("Error loading user data:", error);
+                    userData = JSON.parse(JSON.stringify(defaultUserData));
+                }
+            }
+
+            function saveUserData() {
+                try {
+                    localStorage.setItem('crochetUserData', JSON.stringify(userData));
+                } catch (error) {
+                    console.error("Error saving user data:", error);
+                }
+            }
+            
+            // --- XP & LEVELING SYSTEM ---
+            const levels = [
+                { name: "Aprendiz de Aguja", xp: 0 },
+                { name: "Tejedora Promesa", xp: 1000 },
+                { name: "Artesana del Hilo", xp: 3000 },
+                { name: "Virtuosa del Punto", xp: 5000 },
+                { name: "Maestra del Ganchillo", xp: 8000 },
+                { name: "Domadora de Lanas", xp: 11000 },
+                { name: "Orfebre Textil", xp: 15000 },
+                { name: "Visionaria del Patrón", xp: 20000 },
+                { name: "Titán del Amigurumi", xp: 25000 },
+                { name: "Leyenda del Crochet", xp: 30000 }
+            ];
+
+            function getCurrentLevel() {
+                return levels.slice().reverse().find(l => userData.xp >= l.xp) || levels[0];
+            }
+
+            function getNextLevel() {
+                const currentLevel = getCurrentLevel();
+                return levels.find(l => l.xp > currentLevel.xp) || currentLevel;
+            }
+
+            function addXP(points) {
+                const oldLevel = getCurrentLevel();
+                userData.xp += points;
+                saveUserData();
+                updateProfileUI();
+                const newLevel = getCurrentLevel();
+                if (newLevel.name !== oldLevel.name) {
+                    // Solo lanza confeti si realmente subió de nivel
+                    confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
+                }
+            }
+
+            // --- DAILY CONTENT & CHALLENGES ---
+            function getTodayString() {
+                return new Date().toISOString().split('T')[0];
+            }
+
+            function resetDailyChecksIfNeeded() {
+                const today = getTodayString();
+                if (userData.dailyChecks.lastCheckDate !== today) {
+                    userData.dailyChecks = {
+                        lastCheckDate: today,
+                        loggedIn: { done: false, claimed: false },
+                        videoWatched: { done: false, claimed: false },
+                        photoUploaded: { done: false, claimed: false },
+                    };
+                    saveUserData();
+                }
+            }
+            
+            function completeLoginChallenge() {
+                // Solo si el reto no está ya "hecho" o "reclamado"
+                if (!userData.dailyChecks.loggedIn.done && !userData.dailyChecks.loggedIn.claimed) {
+                    userData.dailyChecks.loggedIn.done = true;
+                    saveUserData();
+                    // Importante: Volver a renderizar los retos diarios para que se actualice la UI
+                    setupDailyChallengesUI(); 
+                }
+            }
+
+            function setupDailyChallengesUI() {
+                const challenges = [
+                    { id: 'loggedIn', text: 'Inicia Sesión', points: 50, status: userData.dailyChecks.loggedIn },
+                    { id: 'videoWatched', text: 'Mira un Video', points: 100, status: userData.dailyChecks.videoWatched },
+                    { id: 'photoUploaded', text: 'Sube un Tejido Nuevo', points: 150, status: userData.dailyChecks.photoUploaded }
+                ];
+
+                const container = document.getElementById('daily-challenges-list');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                challenges.forEach(challenge => {
+                    const { done, claimed } = challenge.status;
+                    const canClaim = done && !claimed;
+                    
+                    const challengeDiv = document.createElement('div');
+                    challengeDiv.className = 'flex items-center justify-between p-3 bg-gray-800 rounded-lg';
+                    challengeDiv.innerHTML = `
+                        <div class="flex items-center">
+                            <i class="fas ${claimed ? 'fa-check-circle text-green-400' : (done ? 'fa-exclamation-circle text-yellow-400' : 'fa-circle text-gray-500')} mr-3"></i>
+                            <span class="${claimed ? 'line-through text-gray-500' : 'text-gray-200'}">${challenge.text}</span>
+                        </div>
+                        <button data-challenge-id="${challenge.id}" class="btn claim-challenge-btn text-xs py-1 px-2 ${canClaim ? 'bg-yellow-500 hover:bg-yellow-600' : ''}" ${!canClaim ? 'disabled' : ''}>
+                            ${claimed ? 'Reclamado' : (canClaim ? 'Reclamar' : `+${challenge.points} XP`)}
+                        </button>
+                    `;
+                    container.appendChild(challengeDiv);
+                });
+
+                container.querySelectorAll('.claim-challenge-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const challengeId = e.currentTarget.dataset.challengeId;
+                        const challengeData = challenges.find(c => c.id === challengeId);
+                        if(challengeData && userData.dailyChecks[challengeId].done && !userData.dailyChecks[challengeId].claimed) {
+                            userData.dailyChecks[challengeId].claimed = true;
+                            addXP(challengeData.points);
+                            saveUserData();
+                            setupDailyChallengesUI(); // Re-renderizar para reflejar el estado "Reclamado"
+                            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+                        }
+                    });
+                });
+            }
+            
+            // --- UI UPDATE FUNCTIONS ---
+            function updateProfileUI() {
+                const currentLevel = getCurrentLevel();
+                const nextLevel = getNextLevel();
+                
+                document.getElementById('user-level-title').textContent = `${currentLevel.name} (Nivel ${levels.indexOf(currentLevel) + 1})`;
+                
+                const xpForNextLevel = nextLevel.xp - currentLevel.xp;
+                const xpInCurrentLevel = userData.xp - currentLevel.xp;
+                const progressPercentage = xpForNextLevel > 0 && currentLevel !== nextLevel ? (xpInCurrentLevel / xpForNextLevel) * 100 : 100;
+
+                document.getElementById('user-xp-bar').style.width = `${progressPercentage}%`;
+                document.getElementById('user-xp-text').textContent = (currentLevel === nextLevel) ? `${userData.xp} XP (MAX)` : `${userData.xp} / ${nextLevel.xp} XP`;
+            }
+
+            // --- LOADING SCREEN MANAGER ---
+            function showLoadingScreen(message, callback) {
+                subtleWelcomeText.textContent = message;
+                subtleWelcomeMessage.classList.remove('hidden'); // Ensure it's not display:none
+                // Force reflow/repaint to ensure display property is applied before transition
+                void subtleWelcomeMessage.offsetWidth; 
+                subtleWelcomeMessage.classList.add('show'); // Start fade in
+
+                // Simulate loading time, then fade out and show main app
+                setTimeout(() => {
+                    subtleWelcomeMessage.classList.remove('show');
+                    subtleWelcomeMessage.classList.add('hide'); // Start fade out
+                    subtleWelcomeMessage.addEventListener('transitionend', function handler() {
+                        subtleWelcomeMessage.removeEventListener('transitionend', handler);
+                        subtleWelcomeMessage.classList.add('hidden'); // Hide completely after transition
+                        subtleWelcomeMessage.classList.remove('hide'); // Clean up classes
+                        callback(); // Execute callback (e.g., show main app content)
+                    }, { once: true });
+                }, 2000); // Display loading screen for 2 seconds
+            }
+
+
+            // --- INITIALIZATION ---
+            function initializeApp() {
+                loadUserData();
+
+                if (userData.name) {
+                    // Si ya tiene nombre, mostrar bienvenida personalizada
+                    document.getElementById('user-name-input').style.display = 'none';
+                    document.getElementById('start-course-btn').style.display = 'none';
+                    document.getElementById('welcome-overlay-title').textContent = `¡Bienvenida de nuevo, ${userData.name}!`;
+                    document.getElementById('welcome-overlay-text').textContent = "Nos alegra tenerte de vuelta 💖";
+                    
+                    // Returning user
+                    welcomeOverlay.style.display = 'none'; // Completely hide welcome overlay
+                    mainAppContent.classList.add('hidden-content'); // Keep main app hidden initially
+
+                    const message = `¡Bienvenida de nuevo, ${userData.name}! Preparando todo para tejer...`;
+                    showLoadingScreen(message, () => {
+                        mainAppContent.classList.remove('hidden-content');
+                        mainAppContent.classList.add('visible-content');
+                        welcomeMessageSpan.textContent = `¡Hola, ${userData.name}!`; // Update the welcome message in the main app header
+
+                        resetDailyChecksIfNeeded();
+                        completeLoginChallenge();
+                        setupDailyChallengesUI();
+                        updateProfileUI();
+                        showSection('inicio'); // Ensure 'inicio' section is active
+                    });
+                    
+                } else {
+                    // First-time user
+                    mainAppContent.classList.add('hidden-content');
+                    welcomeOverlay.style.display = 'flex'; // Ensure welcome overlay is visible
+                    subtleWelcomeMessage.classList.add('hidden'); // Ensure subtle message is hidden
+                    
+                    startCourseBtn.addEventListener('click', () => {
+                        const userName = userNameInput.value.trim();
+                        if (userName) {
+                            userData.name = userName;
+                            saveUserData();
+                            
+                            welcomeOverlay.classList.add('fade-out'); // Fade out the initial welcome overlay
+                            welcomeOverlay.addEventListener('transitionend', function handler() {
+                                welcomeOverlay.removeEventListener('transitionend', handler);
+                                welcomeOverlay.style.display = 'none'; // Remove completely from flow
+
+                                const message = `¡Hola, ${userData.name}! Preparando todo para tejer...`;
+                                showLoadingScreen(message, () => {
+                                    mainAppContent.classList.remove('hidden-content');
+                                    mainAppContent.classList.add('visible-content');
+                                    welcomeMessageSpan.textContent = `¡Hola, ${userData.name}!`; // Update the welcome message in the main app header
+                                    
+                                    resetDailyChecksIfNeeded();
+                                    completeLoginChallenge();
+                                    setupDailyChallengesUI();
+                                    updateProfileUI();
+                                    showSection('inicio');
+                                });
+                            }, { once: true });
+
+                        }
+                    });
+                    userNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') startCourseBtn.click(); });
+                }
+
+                // General app setups (these should run regardless of welcome state, once the app is 'ready')
+                document.querySelectorAll('.nav-btn').forEach(button => button.addEventListener('click', () => showSection(button.dataset.section)));
+                setupAccordions();
+                setupQuizzes();
+                renderGlossary();
+                renderAllVideoLists(); // Se llama aquí para que los videos se carguen la primera vez
+                setupCreations();
+                renderGallery(); // Initial gallery render (will be updated when section is shown)
+                setupBackToTopButton();
+                setupImageModal();
+            }
+            
+            function showSection(sectionId) {
+                document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                
+                const targetSection = document.getElementById(sectionId);
+                const targetButton = document.querySelector(`.nav-btn[data-section="${sectionId}"]`);
+                if(targetSection) {
+                    targetSection.classList.add('active');
+                    if (targetButton) { targetButton.classList.add('active'); }
+                    if (sectionId === 'galeria') renderGallery();
+                    if (sectionId === 'inicio') setupDailyChallengesUI(); // Asegura que los retos se actualicen al volver a Inicio
+                    // No es necesario llamar a renderAllVideoLists() aquí, ya se cargan al inicio
+                    // y los botones se actualizan individualmente.
+                }
+            };
+
+            function setupBackToTopButton() {
+                window.addEventListener('scroll', () => {
+                    backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+                });
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            function setupAccordions() {
+                const nivelesData = { principiante: [ { title: "1. Agarre del Ganchillo y Tensión del Hilo", content: "Existen dos formas principales de sostener el ganchillo: como un lápiz o como un cuchillo. Prueba ambas y elige la más cómoda. El hilo debe fluir por tus dedos con una tensión constante: ni muy apretado (cuesta tejer) ni muy suelto (los puntos quedan flojos)." }, { title: "2. Nudo Deslizado y Punto Cadeneta (cd)", content: "El nudo deslizado es el punto de partida de casi todos los proyectos. La cadeneta es una serie de bucles que forman la base. ¡Practica hacer cadenetas de tensión uniforme!" }, { title: "3. Punto Bajo (pb)", content: "Es el punto más corto y denso. Se usa mucho en amigurumis para que no se vea el relleno. Inserta el ganchillo, toma hebra, saca un bucle (tendrás 2 en el ganchillo), toma hebra de nuevo y pasa a través de los dos bucles." }, { title: "4. Tejer en Plano", content: "Significa tejer en filas, de un lado a otro. Al final de cada fila, se hace una cadeneta de subida y se gira la labor para empezar la siguiente fila en la dirección opuesta." }, { title: "5. Anillo Mágico y Tejer en Círculo", content: "El anillo mágico es una técnica para empezar a tejer en círculo sin dejar un agujero central. Es fundamental para gorros, amigurumis y mandalas. Se teje en espiral, sin cerrar las vueltas." }, { title: "6. Aumentos y Disminuciones", content: "Un aumento (aum) consiste en tejer dos o más puntos en el mismo punto base para ampliar el tejido. Una disminución (dism) une dos o más puntos en uno para reducirlo. Son claves para dar forma a tus proyectos." }, ], intermedio: [ { title: "1. Puntos Medios y Altos (pma, pa)", content: "El Punto Medio Alto (pma) y el Punto Alto (pa) son más altos que el punto bajo, lo que permite avanzar más rápido. Se crean tomando hebra antes de insertar el ganchillo, creando más bucles que se cierran en distintos pasos." }, { title: "2. Tejer en BLO y FLO", content: "Cada punto tiene dos hebras (delantera y trasera). Tejer solo en la hebra trasera (Back Loop Only) o solo en la hebra delantera (Front Loop Only) crea texturas acanaladas y bordes decorativos." }, { title: "3. Cambios de Color Limpios", content: "Para cambiar de color sin que se note, realiza el último paso del último punto antes del cambio con el nuevo color. Esto crea una transición mucho más limpia y profesional." }, { title: "4. Lectura de Patrones (Escritos y Gráficos)", content: "Aprende a descifrar las abreviaturas de los patrones escritos (ej: 2pb, 1aum) y los símbolos de los patrones gráficos. Es como aprender un nuevo idioma que te abrirá un mundo de proyectos." }, { title: "5. Puntos con Textura: Puff, Popcorn y Garbanzo", content: "Estos puntos especiales crean volumen y texturas tridimensionales. Se forman tejiendo múltiples lazadas o puntos altos en un mismo punto base y cerrándolos juntos de diferentes maneras." }, ], avanzado: [ { title: "1. Puntos en Relieve", content: "Se tejen alrededor del 'poste' del punto de la vuelta anterior (por delante o por detrás), creando una textura tridimensional que imita el tejido a dos agujas. Ideal para elásticos de gorros y puños." }, { title: "2. Tapestry y Jacquard Crochet", content: "Técnicas de 'colorwork' para crear dibujos y patrones con múltiples colores en una misma fila. En Tapestry, el hilo que no se usa se esconde dentro de los puntos; en Jacquard, se deja flotando por detrás." }, { title: "3. Punto Tunecino Básico", content: "Es un híbrido entre crochet y tejido a dos agujas. Se usa un ganchillo largo y los puntos se recogen en una pasada y se cierran en otra, creando una tela densa y única." }, { title: "4. Construcción de Prendas", content: "Aprende a unir piezas para crear jerséis, cardigans y otras prendas. Entiende conceptos como sisas, escotes y costuras invisibles para un acabado profesional." }, { title: "5. Bloqueo de Proyectos", content: "Es el proceso de mojar y dar forma a tu tejido terminado, fijándolo con alfileres hasta que se seque. Es esencial para que las prendas queden con la forma y caída correctas, y los puntos se asienten." }, ] };
+
+                ['principiante', 'intermedio', 'avanzado'].forEach(level => {
+                    const container = document.getElementById(`${level}-accordion`);
+                    if (!container) return;
+                    container.innerHTML = '';
+                    nivelesData[level].forEach(item => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'accordion-item';
+                        itemDiv.innerHTML = `<button class="accordion-button"><span>${item.title}</span><i class="fas fa-chevron-down accordion-icon"></i></button><div class="accordion-content"><div><p class="text-gray-400 leading-relaxed">${item.content}</p></div></div>`;
+                        container.appendChild(itemDiv);
+                    });
+                });
+
+                document.querySelectorAll('.accordion-button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const content = e.currentTarget.nextElementSibling;
+                        e.currentTarget.classList.toggle('active');
+                        content.style.maxHeight = e.currentTarget.classList.contains('active') ? content.scrollHeight + "px" : null;
+                    });
+                });
+            }
+
+            // --- QUIZZES ---
+            function setupQuizzes() {
+                const quizzes = { principiante: [ { q: "¿Cuál es el punto más corto y denso del crochet?", o: { a: "Punto Alto", b: "Punto Bajo", c: "Punto Cadeneta" }, c: "b" }, { q: "¿Qué técnica se usa para empezar un amigurumi sin un agujero en el centro?", o: { a: "Nudo Deslizado", b: "Anillo Mágico", c: "Punto Deslizado" }, c: "b" }, { q: "Un 'aumento' sirve para...", o: { a: "Terminar la labor", b: "Hacer el tejido más pequeño", c: "Hacer el tejido más grande" }, c: "c" }, { q: "¿Cómo se llama la base de casi todos los proyectos, formada por una serie de bucles?", o: { a: "Punto Bajo", b: "Anillo Mágico", c: "Cadeneta" }, c: "c" }, { q: "Para tejer en plano, al final de cada fila, debes...", o: { a: "Cortar el hilo", b: "Hacer un aumento", c: "Hacer una cadeneta de subida y girar" }, c: "c" }, { q: "Una 'disminución' hace que tu tejido sea...", o: { a: "Más ancho", b: "Más estrecho", c: "Más alto" }, c: "b" }, { q: "¿Qué significa 'pb' en un patrón?", o: { a: "Punto Bonito", b: "Punto Bajo", c: "Punto Base" }, c: "b" }, { q: "¿Cuántos bucles tienes en el ganchillo JUSTO ANTES de hacer la última lazada de un Punto Bajo?", o: { a: "Uno", b: "Dos", c: "Tres" }, c: "b" }, { q: "El nudo deslizado se usa para...", o: { a: "Unir dos piezas", b: "Crear una textura", c: "Iniciar el tejido" }, c: "c" }, { q: "Para que un amigurumi quede firme y no se vea el relleno, ¿qué punto usarías?", o: { a: "Punto Alto", b: "Punto Cadeneta", c: "Punto Bajo" }, c: "c" } ], intermedio: [ { q: "¿Qué significa tejer en 'BLO'?", o: { a: "Solo en la hebra bonita", b: "Solo en la hebra trasera", c: "Solo en bucles largos" }, c: "b" }, { q: "¿Para qué se usa un patrón gráfico?", o: { a: "Para ver fotos del proyecto", b: "Para leer los pasos escritos", c: "Para visualizar los puntos como símbolos" }, c: "c" }, { q: "El punto Popcorn se caracteriza por crear...", o: { a: "Una textura plana", b: "Volumen y una 'bolita' que resalta", c: "Agujeros en el tejido" }, c: "b" }, { q: "¿Cuál de estos puntos es el más alto?", o: { a: "Punto Bajo (pb)", b: "Punto Medio Alto (pma)", c: "Punto Alto (pa)" }, c: "c" }, { q: "Para hacer un cambio de color perfecto, ¿cuándo introduces el nuevo color?", o: { a: "Al inicio de la vuelta", b: "En el último paso del punto anterior", c: "Después de terminar la vuelta" }, c: "b" }, { q: "La abreviatura 'pma' corresponde a:", o: { a: "Punto Muy Ancho", b: "Punto Medio Alto", c: "Punto Mágico" }, c: "b" }, { q: "¿Qué punto usarías para moverte por el tejido sin añadir altura?", o: { a: "Punto Bajo", b: "Punto Deslizado", c: "Punto Alto" }, c: "b" }, { q: "'Leer un patrón' implica entender...", o: { a: "Solo los dibujos", b: "Solo el tipo de lana", c: "Abreviaturas y símbolos" }, c: "c" }, { q: "¿Qué punto NO es un punto de textura que crea volumen?", o: { a: "Punto Puff", b: "Punto Popcorn", c: "Punto Cadeneta" }, c: "c" }, { q: "Tejer en 'FLO' se usa a menudo para...", o: { a: "Hacer el tejido más grueso", b: "Crear bordes o añadir detalles en el frente", c: "Cerrar un anillo mágico" }, c: "b" } ], avanzado: [ { q: "En Tapestry, el hilo que no usas...", o: { a: "Se corta", b: "Se esconde dentro de los puntos", c: "Se deja colgando por detrás" }, c: "b" }, { q: "¿Qué es el 'bloqueo' de un proyecto?", o: { a: "Coser las piezas", b: "Deshacer una parte", c: "Mojar y dar forma al tejido para un acabado perfecto" }, c: "c" }, { q: "Los puntos en relieve se tejen alrededor del...", o: { a: "Bucle superior del punto", b: "'Poste' o cuerpo del punto", c: "Espacio entre puntos" }, c: "b" }, { q: "El crochet tunecino se caracteriza por...", o: { a: "Usar dos ganchillos", b: "Recoger muchos puntos en el ganchillo a la vez", c: "Ser idéntico al crochet normal" }, c: "b" }, { q: "Para crear los elásticos de un gorro, ¿qué técnica es ideal?", o: { a: "Puntos en Relieve", b: "Tapestry", c: "Punto Cadeneta" }, c: "a" }, { q: "El 'colorwork' se refiere a técnicas para...", o: { a: "Tejer con un solo color", b: "Tejer con muchos colores para crear dibujos", c: "Cambiar el grosor del hilo" }, c: "b" }, { q: "Construir una prenda implica saber sobre...", o: { a: "Solo tejer cuadrados", b: "Sisas, escotes y uniones", c: "Solo hacer amigurumis" }, c: "b" }, { q: "¿Qué técnica es un híbrido entre ganchillo y dos agujas?", o: { a: "Intarsia", b: "Crochet Tunecino", c: "Tapestry" }, c: "b" }, { q: "El objetivo principal del bloqueo es...", o: { a: "Hacer el tejido más pequeño", b: "Darle la forma y caída correcta a la pieza", c: "Cambiar el color del tejido" }, c: "b" }, { q: "La diferencia principal entre Tapestry e Intarsia es...", o: { a: "No hay diferencia", b: "Cómo se maneja el hilo que no se usa", c: "Los colores que se utilizan" }, c: "b" } ] };
+                Object.keys(quizzes).forEach(id => updateBestScoreDisplay(id, quizzes));
+                document.querySelectorAll('.quiz-btn').forEach(button => button.addEventListener('click', (e) => toggleQuiz(e.currentTarget.dataset.quizId, quizzes)));
+            }
+
+            function toggleQuiz(quizId, quizzes) {
+                const existingQuiz = document.getElementById(`quiz-${quizId}`);
+                // Close all other quizzes, but allow the current one to stay open if it's the one being toggled off
+                document.querySelectorAll('.quiz-container').forEach(c => {
+                    if (c.id !== `quiz-${quizId}` && c.classList.contains('active-quiz')) {
+                        closeQuiz(c);
+                    }
+                });
+                
+                if (existingQuiz && existingQuiz.classList.contains('active-quiz')) {
+                    // If the clicked quiz is already open, close it
+                    closeQuiz(existingQuiz);
+                } else {
+                    // Open the clicked quiz
+                    openQuiz(quizId, quizzes);
+                }
+            }
+
+            function openQuiz(quizId, quizzes) {
+                const button = document.querySelector(`.quiz-btn[data-quiz-id="${quizId}"]`);
+                // Check if the quiz container already exists and is in the process of closing or is hidden
+                let container = document.getElementById(`quiz-${quizId}`);
+                if (!container) {
+                    container = document.createElement('div');
+                    container.id = `quiz-${quizId}`;
+                    container.className = 'quiz-container'; // This implies opacity:0, max-height:0 from CSS
+                    button.nextElementSibling.insertAdjacentElement('afterend', container);
+                } else {
+                    // If it exists but was hidden, remove any closing classes
+                    container.classList.remove('closing-quiz');
+                }
+                
+                let contentHTML = `<div class="quiz-padding-wrapper">${quizzes[quizId].map((q, i) => `<div class="mb-4"><p class="quiz-question">${i + 1}. ${q.q}</p>${Object.keys(q.o).map(key => `<label class="quiz-option"><input type="radio" name="q${quizId}-${i}" value="${key}"> ${key.toUpperCase()}. ${q.o[key]}</label>`).join('')}</div>`).join('')}<button class="btn submit-quiz-btn" data-quiz-id="${quizId}">Verificar Respuestas</button><p class="quiz-result mt-4" id="result-${quizId}"></p><button class="btn mt-4 bg-gray-600 hover:bg-gray-700 close-quiz-btn" data-quiz-id="${quizId}">Cerrar Cuestionario</button></div>`; // Add a close button
+                container.innerHTML = contentHTML;
+
+                // Add event listener for submit button
+                container.querySelector('.submit-quiz-btn').addEventListener('click', () => checkQuizAnswers(quizId, quizzes));
+                // Add event listener for new close button
+                container.querySelector('.close-quiz-btn').addEventListener('click', () => closeQuiz(container));
+
+                // Trigger the transition
+                // Use setTimeout to ensure the element is in DOM before applying active class, allowing transition to play
+                setTimeout(() => {
+                    container.classList.add('active-quiz');
+                }, 10); 
+            }
+
+            function closeQuiz(container) {
+                if (!container) return;
+                // Remove active state and add closing state to trigger fade-out/collapse transition
+                container.classList.remove('active-quiz'); 
+                container.classList.add('closing-quiz');
+                
+                // Remove the element from the DOM after the transition completes
+                container.addEventListener('transitionend', function handler() {
+                    container.removeEventListener('transitionend', handler);
+                    // Only remove if it's still in the closing state, in case it was re-opened quickly
+                    if (container.classList.contains('closing-quiz')) {
+                        container.remove();
+                    }
+                }, { once: true });
+            }
+
+            function checkQuizAnswers(quizId, quizzes) {
+                const container = document.getElementById(`quiz-${quizId}`);
+                if (!container) return;
+                const resultEl = container.querySelector(`#result-${quizId}`);
+                let correct = 0;
+                quizzes[quizId].forEach((q, i) => {
+                    const selected = container.querySelector(`input[name="q${quizId}-${i}"]:checked`);
+                    if (selected && selected.value === q.c) correct++;
+                });
+
+                if (correct > (userData.bestScores[quizId] || 0)) {
+                    userData.bestScores[quizId] = correct;
+                    if (correct / quizzes[quizId].length >= 0.6) addXP(50);
+                    saveUserData();
+                    updateBestScoreDisplay(quizId, quizzes);
+                }
+                resultEl.textContent = `Tu resultado: ${correct} de ${quizzes[quizId].length} correctas.`;
+                resultEl.className = `quiz-result mt-4 ${correct > quizzes[quizId].length / 2 ? 'text-green-400' : 'text-red-400'}`;
+
+                // Automatically close the quiz after a short delay to show the result
+                setTimeout(() => {
+                    closeQuiz(container);
+                }, 3000); // Close after 3 seconds
+            }
+             function updateBestScoreDisplay(quizId, quizzes) {
+                const scoreDisplay = document.getElementById(`best-score-${quizId}`);
+                if (!scoreDisplay) return;
+                const total = quizzes[quizId].length;
+                const score = userData.bestScores[quizId] || 0;
+                scoreDisplay.innerHTML = `<i class="fas fa-trophy mr-2 text-yellow-400"></i>Mejor Puntuación: ${score} / ${total}`;
+            }
+
+            // --- GLOSSARY ---
+            function renderGlossary() {
+                const glossaryData = [ { term: 'pc, cad', name: 'Punto Cadeneta', desc: 'El punto más básico que forma una cadena de bucles. Es el inicio de casi todo.' }, { term: 'pr, pd, pe', name: 'Punto Raso / Deslizado', desc: 'El punto más plano. Se usa para unir piezas o moverse por el tejido sin añadir altura.' }, { term: 'pb, mp', name: 'Punto Bajo / Medio Punto', desc: 'Punto corto y denso, ideal para amigurumis y tejidos firmes.' }, { term: 'pma, mpa', name: 'Punto Medio Alto', desc: 'De altura intermedia entre el punto bajo y el punto alto.' }, { term: 'pa, pv', name: 'Punto Alto / Vareta', desc: 'Un punto alto y flexible que permite avanzar rápidamente en el tejido.' }, { term: 'pad', name: 'Punto Alto Doble', desc: 'Aún más alto que el punto alto, se crea con dos lazadas iniciales.' }, { term: 'aum', name: 'Aumento', desc: 'Tejer dos o más puntos en el mismo punto base para ampliar la labor.' }, { term: 'dism', name: 'Disminución', desc: 'Unir dos o más puntos en uno solo para reducir la labor.' }, { term: 'AM', name: 'Anillo Mágico', desc: 'Técnica para empezar a tejer en círculo (amigurumis, gorros) sin dejar un agujero central.' }, { term: 'BLO', name: 'Back Loop Only', desc: 'Tejer tomando solo la hebra trasera del punto. Crea una textura acanalada.' }, { term: 'FLO', name: 'Front Loop Only', 'desc': 'Tejer tomando solo la hebra delantera del punto. Ideal para crear bordes o añadir detalles.' }, { term: 'sc', name: 'Single Crochet (Inglés)', desc: 'Equivalente al Punto Bajo (pb) en español.' }, { term: 'hdc', name: 'Half Double Crochet (Inglés)', desc: 'Equivalente al Punto Medio Alto (pma) en español.' }, { term: 'dc', name: 'Double Crochet (Inglés)', desc: 'Equivalente al Punto Alto (pa) en español.' }, { term: 'sl st', name: 'Slip Stitch (Inglés)', desc: 'Equivalente al Punto Raso o Deslizado (pr) en español.' }, { term: 'ch', name: 'Chain (Inglés)', desc: 'Equivalente a la Cadeneta (cad) en español.' }, ];
+                document.getElementById('glossary-list').innerHTML = glossaryData.map(item => `<div class="card bg-gray-800 p-4"><h4 class="text-xl font-semibold text-pink-400 mb-2">${item.name}</h4><p class="text-gray-400 text-sm mb-2 font-mono">Abreviaturas: ${item.term}</p><p class="text-gray-300">${item.desc}</p></div>`).join('');
+            }
+
+            // --- VIDEOS DATA ---
+            // Definir videoData en un ámbito más amplio para que sea accesible a handleWatchedButtonClick
+            const videoData = {
+                principiante: [
+                    { id: 'VZAcWgxXi78', title: 'Nudo Deslizado y Cadeneta' },
+                    { id: 'KHxUbnyuavg', title: 'Punto Bajo (pb)' },
+                    { id: '54yl26ykQ6U', title: 'Punto Alto (pa)' },
+                    { id: 'QqKZLDk-4OY', title: 'Anillo Mágico Perfecto' },
+                    { id: 'gRogEMPPsG0', title: 'Aumentos en Círculo' },
+                    { id: 'TinE9oBTmNc', title: 'Disminución Invisible' },
+                    { id: 'liZzZO5z8TM', title: 'Cómo Leer un Patrón Simple' },
+                    { id: 'pQ1VqndQqx8', title: 'Unir Vueltas y Rematar' },
+                    { id: 'sbFtxLKRDYM', title: 'Tejer en Plano (ida y vuelta)' },
+                    { id: 'UAJOrFUVEiU', title: 'Esconder Hebras Fácilmente' }
+                ],
+                intermedio: [
+                    { id: 'jIZL1mqaZOY', title: 'Cambio de Color Limpio' },
+                    { id: '9Ek0zbhW5eo', title: 'Punto Medio Alto (pma)' },
+                    { id: 'HWc8_Ez-Vaw', title: 'Tejer en BLO y FLO' },
+                    { id: 'KMpJVo7efOU', title: 'Cómo Hacer un Granny Square' },
+                    { id: 'oszNE6zH80c', title: 'Punto Puff' },
+                    { id: 'b0ObO_BECHQ', title: 'Punto Popcorn' },
+                    { id: '_0pd6DbUPik', title: 'Punto Garbanzo (Cluster)' },
+                    { id: 'bhvMybgdEII', title: 'Unión de Piezas con Costura' },
+                    { id: 'BEgR71AlQfs', title: 'Bordes Simples y Decorativos' },
+                    { id: '3SdEpokPBPk', title: 'Cerrar Amigurumis' }
+                ],
+                avanzado: [
+                    { id: 'tMpEcJ7xQ0Q', title: 'Puntos en Relieve (delantero y trasero)' },
+                    { id: 'aO-1N5yBdSE', title: 'Técnica Tapestry' },
+                    { id: 'oiU4eQea444', title: 'Punto Waffle' },
+                    { id: 'y-ZoHBNj4sM', title: 'Punto Cesta' },
+                    { id: 'dYw1vZRx5eY', title: 'Fundación sin Cadeneta (FSC)' },
+                    { id: 'QO6c69vM_HE', title: 'Punto Jazmín' },
+                    { id: '3jmpoh6qYxc', title: 'Crochet Tunecino Básico' },
+                    { id: 'NM-ri0nkdd0', title: 'Unión "Join As You Go"' },
+                    { id: 'ivj9c4wtzCM', title: 'Técnica C2C (Corner to Corner)' },
+                    { id: 'veO9X-KCcNk', title: 'Bloqueo de Proyectos' }
+                ]
+            };
+
+            function renderAllVideoLists() {
+                // Ahora videoData está disponible en este ámbito
+                ['principiante', 'intermedio', 'avanzado'].forEach(level => renderVideoList(level, videoData[level]));
+            }
+
+            function renderVideoList(level, videos) {
+                const container = document.getElementById(`${level}-video-list`);
+                if (!container) return;
+                container.innerHTML = videos.map(video => {
+                    const isWatched = userData.watchedVideos.includes(video.title);
+                    // IMPORTANTE: URL de YouTube corregida aquí
+                    return `<div class="bg-gray-900 md:rounded-xl overflow-hidden shadow-lg"><div class="relative w-full bg-black" style="padding-bottom: 56.25%;">${video.id ? `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${video.id}" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : ''}</div><div class="p-4 text-center"><h3 class="text-lg font-semibold text-pink-400">${video.title}</h3><button class="watched-btn mt-3 ${isWatched ? 'completed' : ''}" data-video-title="${video.title}" data-video-level="${level}">${isWatched ? '<i class="fas fa-check-circle mr-2"></i>Visto' : '<i class="far fa-eye mr-2"></i>Marcar como visto'}</button></div></div>`;
+                }).join('');
+                // Aseguramos que los event listeners se adjunten correctamente después de renderizar
+                container.querySelectorAll('.watched-btn').forEach(b => b.addEventListener('click', handleWatchedButtonClick));
+            }
+
+            // MODIFICACIÓN CLAVE: Esta función ahora solo actualiza el botón clicado.
+            function handleWatchedButtonClick(event) {
+                const button = event.currentTarget;
+                const videoTitle = button.dataset.videoTitle;
+                // No necesitamos videoLevel aquí si no re-renderizamos la lista completa
+                // const videoLevel = button.dataset.videoLevel; 
+                const videoIndex = userData.watchedVideos.indexOf(videoTitle);
+
+                if (videoIndex > -1) {
+                    // Desmarcar video
+                    userData.watchedVideos.splice(videoIndex, 1);
+                    // Actualizar el estado del botón: ahora es "Marcar como visto"
+                    button.classList.remove('completed');
+                    button.innerHTML = '<i class="far fa-eye mr-2"></i>Marcar como visto';
+                } else {
+                    // Marcar video como visto
+                    userData.watchedVideos.push(videoTitle);
+                    // Actualizar el estado del botón: ahora es "Visto"
+                    button.classList.add('completed');
+                    button.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Visto';
+
+                    // Si el reto diario de video visto no estaba completado, lo marcamos
+                    if (!userData.dailyChecks.videoWatched.done) {
+                        userData.dailyChecks.videoWatched.done = true;
+                        setupDailyChallengesUI(); // Actualizamos la UI de retos diarios para que aparezca "Reclamar"
+                    }
+                }
+                saveUserData();
+                
+                // *** ¡IMPORTANTE! Hemos eliminado la llamada a renderVideoList aquí ***
+                // Ya no es necesario re-renderizar toda la lista, solo el botón se actualiza.
+            }
+            
+            // --- CREATIONS & GALLERY ---
+            function setupCreations() {
+                const imageInput = document.getElementById('image-input');
+                const imagePreview = document.getElementById('image-preview');
+                const titleInput = document.getElementById('image-title-input');
+                const uploadBtn = document.getElementById('upload-image-btn');
+                let imageDataUrl = null;
+
+                imageInput.addEventListener('change', () => {
+                    const file = imageInput.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            imageDataUrl = e.target.result;
+                            imagePreview.src = imageDataUrl;
+                            imagePreview.classList.remove('hidden');
+                            uploadBtn.disabled = false;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                uploadBtn.addEventListener('click', () => {
+                    if (!imageDataUrl) return;
+                    const newCreation = {
+                        id: Date.now(),
+                        title: titleInput.value || "Mi Creación",
+                        date: new Date().toLocaleDateString('es-ES'),
+                        imageData: imageDataUrl,
+                        favorite: false,
+                    };
+                    userData.creations.unshift(newCreation);
+                    
+                    // Activamos el reto diario de subir foto si no está hecho
+                    if (!userData.dailyChecks.photoUploaded.done) {
+                        userData.dailyChecks.photoUploaded.done = true;
+                        setupDailyChallengesUI(); // Actualizamos la UI de retos diarios
+                    }
+                    
+                    saveUserData();
+                    imageInput.value = '';
+                    titleInput.value = '';
+                    imagePreview.classList.add('hidden');
+                    uploadBtn.disabled = true;
+                    showSection('galeria'); // Mover a la galería para ver la nueva creación
+                });
+            }
+
+            function renderGallery() {
+                const grid = document.getElementById('gallery-grid');
+                const emptyMsg = document.getElementById('gallery-empty-message');
+                grid.innerHTML = '';
+                if (userData.creations.length === 0) {
+                    emptyMsg.classList.remove('hidden');
+                    return;
+                }
+                emptyMsg.classList.add('hidden');
+                userData.creations.forEach(creation => {
+                    const card = document.createElement('div');
+                    card.className = `gallery-image-card ${creation.favorite ? 'favorite-glow' : ''}`;
+                    card.innerHTML = `
+                        <img src="${creation.imageData}" alt="${creation.title}" class="gallery-image">
+                        <i class="fas fa-star favorite-star gallery-icon ${creation.favorite ? 'favorited' : ''}" data-id="${creation.id}"></i>
+                        <i class="fas fa-trash delete-trash gallery-icon" data-id="${creation.id}"></i>
+                    `;
+                    grid.appendChild(card);
+                    card.querySelector('.gallery-image').addEventListener('click', () => {
+                        document.getElementById('modal-image').src = creation.imageData;
+                        document.getElementById('image-modal').classList.add('visible');
+                    });
+                    card.querySelector('.favorite-star').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        toggleFavorite(creation.id);
+                    });
+                    card.querySelector('.delete-trash').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showConfirmationModal("¿Segura que quieres eliminar esta creación?", () => {
+                            deleteCreation(creation.id);
+                        });
+                    });
+                });
+            }
+            
+            function toggleFavorite(id) {
+                const creation = userData.creations.find(c => c.id === id);
+                if (creation) {
+                    creation.favorite = !creation.favorite;
+                    saveUserData();
+                    renderGallery();
+                }
+            }
+            
+            function deleteCreation(id) {
+                userData.creations = userData.creations.filter(c => c.id !== id);
+                saveUserData();
+                renderGallery();
+            }
+
+            function showConfirmationModal(message, onConfirm) {
+                const modal = document.getElementById('confirmation-modal');
+                document.getElementById('confirmation-message').textContent = message;
+
+                const confirmBtn = document.getElementById('confirm-btn');
+                const cancelBtn = document.getElementById('cancel-btn');
+
+                // Clonar y reemplazar para limpiar listeners previos y asegurar que solo haya uno
+                const newConfirmBtn = confirmBtn.cloneNode(true);
+                confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+                const newCancelBtn = cancelBtn.cloneNode(true);
+                cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
+
+                newConfirmBtn.addEventListener('click', function confirmHandler() {
+                    onConfirm();
+                    modal.classList.remove('visible');
+                    newConfirmBtn.removeEventListener('click', confirmHandler); 
+                    newCancelBtn.removeEventListener('click', cancelHandler); 
+                });
+                
+                newCancelBtn.addEventListener('click', function cancelHandler() {
+                    modal.classList.remove('visible');
+                    newConfirmBtn.removeEventListener('click', confirmHandler); 
+                    newCancelBtn.removeEventListener('click', cancelHandler); 
+                });
+
+                modal.classList.add('visible');
+            }
+
+            function setupImageModal() {
+                const modal = document.getElementById('image-modal');
+                const closeModalBtn = document.getElementById('modal-close-btn');
+
+                modal.addEventListener('click', (e) => {
+                    // Cierra el modal solo si se hace click directamente en el overlay, no en la imagen
+                    if (e.target === modal) {
+                        modal.classList.remove('visible');
+                    }
+                });
+
+                closeModalBtn.addEventListener('click', () => {
+                    modal.classList.remove('visible');
+                });
+            }
+            
+            // --- START THE APP ---
+            initializeApp();
+        });
+    </script>
+</body>
+</html>
