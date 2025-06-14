@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidad Crochet - Tu Universo de Crochet</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Pacifico&display=swap" rel="stylesheet">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.js"></script>
 
     <style>
         /* Estilos personalizados adaptados */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0d0d0d;
@@ -58,7 +58,7 @@
         ::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: #C026D3; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #a824b3; }
-        
+
         /* Scrollbar horizontal para la barra de navegación */
         .custom-scrollbar-horizontal::-webkit-scrollbar {
             height: 6px;
@@ -111,7 +111,7 @@
             box-shadow: none;
             transform: none;
         }
-        
+
         .btn-danger {
             background-color: #dc2626; /* red-600 */
         }
@@ -123,7 +123,7 @@
             background-color: #a824b3;
             box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4), 0 0 10px rgba(192, 38, 211, 0.7);
         }
-        
+
         .btn-green { background-color: #16a34a; }
         .btn-green:hover:not(:disabled) {
             background-color: #15803d;
@@ -139,7 +139,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         #back-to-top-btn {
             position: fixed;
             bottom: 20px;
@@ -157,7 +157,7 @@
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 0 20px rgba(192, 38, 211, 0.8), 0 8px 15px rgba(0,0,0,0.6);
         }
-        
+
         /* Welcome Overlay */
 #welcome-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -179,7 +179,7 @@
             outline: none; border-color: #C026D3;
             box-shadow: 0 0 0 3px rgba(192, 38, 211, 0.4);
         }
-        
+
         /* Main App Content visibility */
         #main-app-content { transition: opacity 0.5s ease-out; }
         #main-app-content.hidden-content { opacity: 0; pointer-events: none; }
@@ -227,13 +227,13 @@
         }
 
         /* Quiz styles */
-        .quiz-container { 
-            background-color: #1f1f1f; 
-            border-radius: 12px; 
-            margin-top: 20px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+        .quiz-container {
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             border: 1px solid #3a3a3a;
-            
+
             /* Styles for transition */
             opacity: 0;
             max-height: 0;
@@ -294,7 +294,7 @@
             border-radius: 9999px;
             transition: width 0.5s ease-out;
         }
-        
+
         /* New Gallery and Creations Styles */
         .file-input-label {
             border: 2px dashed #4a4a4a;
@@ -497,37 +497,14 @@
             color: #d0d0d0; /* Color base */
             margin-bottom: 1rem;
             transition: transform 0.4s ease-out, color 0.4s ease-out; /* Animación de crecimiento y color */
-            text-shadow: 0 0 10px rgba(192, 38, 211, 0.3); /* Sombra sutil */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra sutil */
         }
-        /* Etapas de crecimiento de la mascotita */
-        .mascot-stage-1 { /* Nivel 1-2 */
-            font-size: 2.5rem;
-            color: #f8c1f0; /* Rosado claro */
-            transform: scale(1);
-        }
-        .mascot-stage-2 { /* Nivel 3-5 */
-            font-size: 3rem;
-            color: #f472b6; /* Rosado medio */
-            transform: scale(1.1);
-        }
-        .mascot-stage-3 { /* Nivel 6-8 */
-            font-size: 3.5rem;
-            color: #c026d3; /* Púrpura */
-            transform: scale(1.2);
-        }
-        .mascot-stage-4 { /* Nivel 9-10 */
-            font-size: 4rem;
-            background-image: linear-gradient(to right, #facc15, #f472b6); /* Degradado dorado/rosa */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: scale(1.3);
-            filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.7)); /* Brillo dorado */
-        }
+        /* Las clases .mascot-stage-X ya no son necesarias, los estilos se aplican en JS */
 
     </style>
 </head>
 <body class="selection:bg-pink-500 selection:text-white">
-    
+
     <div id="welcome-overlay">
         <h2 class="text-gradient font-bold mb-6 drop-shadow-lg text-4xl" id="welcome-overlay-title">¡Bienvenida a Comunidad Crochet!</h2>
         <p class="text-gray-300 text-lg mb-6 max-w-md" id="welcome-overlay-text">¡Bienvenida a nuestra familia de tejedoras! ¿Cómo te llamas?</p>
@@ -557,7 +534,7 @@
 
     <div id="main-app-content" class="hidden-content">
         <div class="container min-h-screen flex flex-col">
-            
+
             <header class="text-center mb-6 p-4 bg-gradient-to-br from-gray-900 to-black rounded-b-3xl shadow-xl border-b border-gray-700">
                 <h1 class="font-pacifico text-4xl sm:text-5xl font-extrabold text-gradient mb-2 drop-shadow-lg">
                     Comunidad Crochet
@@ -588,12 +565,12 @@
 
                 <section id="inicio" class="section-content active">
                     <h2 class="text-3xl font-bold mb-4 text-gradient"><span id="welcome-message">¡Bienvenida a Comunidad Crochet!</span></h2>
-                    
+
                     <div id="user-profile-card" class="card mb-6 flex flex-col items-center">
-                        <div id="mascot-display" class="mascot-stage-1">
-                            <i class="fas fa-yarn"></i>
+                        <div id="mascot-display">
+                            <!-- La mascota se renderizará aquí dinámicamente según el nivel -->
                         </div>
-                        
+
                         <div class="flex justify-between items-center mb-2 w-full">
                             <span id="user-level-title" class="font-bold text-lg text-gray-200"></span>
                             <span id="user-streak" class="flex items-center text-yellow-400 font-bold hidden"><i class="fas fa-fire mr-1"></i> 0</span>
@@ -606,14 +583,14 @@
                             <span id="user-xp-text">0 / 100 XP</span>
                         </div>
                     </div>
-                    
+
                     <div class="card mb-6">
                         <h3 class="text-xl font-bold mb-4 flex items-center"><i class="fas fa-calendar-day mr-3 text-pink-400"></i>Retos Diarios</h3>
                         <div id="daily-challenges-list" class="space-y-3">
                             </div>
                     </div>
                 </section>
-                
+
                 <section id="niveles" class="section-content card">
                     <h2 class="text-3xl font-bold mb-6 text-gradient">Hoja de Ruta del Tejedor</h2>
                     <p class="text-gray-300 leading-relaxed mb-6">Aprende y domina cada técnica en orden para avanzar en tu camino. Al final de cada nivel, ¡pon a prueba tus conocimientos con un cuestionario!</p>
@@ -682,7 +659,7 @@
                         <div id="avanzado-video-list" class="grid grid-cols-1 md:grid-cols-2 gap-y-8 -mx-6 md:mx-0 md:gap-6"></div>
                     </div>
                 </section>
-                
+
                 <section id="herramientas" class="section-content card">
                      <h2 class="text-3xl font-bold mb-6 text-gradient">El Kit de la Tejedora</h2>
                      <p class="text-gray-300 leading-relaxed mb-6">Conocer tus herramientas es clave. Aquí exploramos los materiales que te acompañarán en cada proyecto, desde lo indispensable hasta lo que te hará la vida más fácil.</p>
@@ -747,7 +724,7 @@
                                 <span class="text-purple-400 font-semibold">¡Visita su Instagram! <i class="fas fa-external-link-alt external-link-icon"></i></span>
                             </a>
                         </div>
-                        
+
                         <div class="creator-card">
                             <a href="https://www.instagram.com/amigu_gm?utm_source=qr&igsh=cXVyeGlvcno2emw3" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-instagram creator-icon"></i>
@@ -756,7 +733,7 @@
                                 <span class="text-purple-400 font-semibold">¡Visita su Instagram! <i class="fas fa-external-link-alt external-link-icon"></i></span>
                             </a>
                         </div>
-                        
+
                         <div class="creator-card">
                             <a href="https://www.instagram.com/katycrochet_?igsh=cTVvbzh0YXR4Y2Jj" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-instagram creator-icon"></i>
@@ -837,7 +814,7 @@
                                 <span class="text-purple-400 font-semibold">¡Visita su canal! <i class="fas fa-external-link-alt external-link-icon"></i></span>
                             </a>
                         </div>
-                        
+
                     </div>
                 </section>
                 </main>
@@ -858,7 +835,7 @@
             const welcomeMessageSpan = document.getElementById('welcome-message');
             const backToTopBtn = document.getElementById('back-to-top-btn');
             const mascotDisplay = document.getElementById('mascot-display'); // NUEVO: Elemento de la mascotita
-            
+
             // Welcome Overlay & Loading Screen Elements
             const welcomeOverlay = document.getElementById('welcome-overlay');
             const userNameInput = document.getElementById('user-name-input');
@@ -911,7 +888,7 @@
                     console.error("Error saving user data:", error);
                 }
             }
-            
+
             // --- XP & LEVELING SYSTEM ---
             const levels = [
                 { name: "Aprendiz de Aguja", xp: 0 },
@@ -964,14 +941,14 @@
                     saveUserData();
                 }
             }
-            
+
             function completeLoginChallenge() {
                 // Solo si el reto no está ya "hecho" o "reclamado"
                 if (!userData.dailyChecks.loggedIn.done && !userData.dailyChecks.loggedIn.claimed) {
                     userData.dailyChecks.loggedIn.done = true;
                     saveUserData();
                     // Importante: Volver a renderizar los retos diarios para que se actualice la UI
-                    setupDailyChallengesUI(); 
+                    setupDailyChallengesUI();
                 }
             }
 
@@ -985,11 +962,11 @@
                 const container = document.getElementById('daily-challenges-list');
                 if (!container) return;
                 container.innerHTML = '';
-                
+
                 challenges.forEach(challenge => {
                     const { done, claimed } = challenge.status;
                     const canClaim = done && !claimed;
-                    
+
                     const challengeDiv = document.createElement('div');
                     challengeDiv.className = 'flex items-center justify-between p-3 bg-gray-800 rounded-lg';
                     challengeDiv.innerHTML = `
@@ -1018,16 +995,17 @@
                     });
                 });
             }
-            
+
             // --- UI UPDATE FUNCTIONS ---
             function updateProfileUI() {
                 const currentLevel = getCurrentLevel();
                 const nextLevel = getNextLevel();
-                
+
                 document.getElementById('user-level-title').textContent = `${currentLevel.name} (Nivel ${levels.indexOf(currentLevel) + 1})`;
-                
+
                 const xpForNextLevel = nextLevel.xp - currentLevel.xp;
                 const xpInCurrentLevel = userData.xp - currentLevel.xp;
+                // Ensure progressPercentage is not NaN and is capped at 100%
                 const progressPercentage = xpForNextLevel > 0 && currentLevel !== nextLevel ? (xpInCurrentLevel / xpForNextLevel) * 100 : 100;
 
                 document.getElementById('user-xp-bar').style.width = `${progressPercentage}%`;
@@ -1037,32 +1015,96 @@
                 updateMascotDisplay(currentLevel);
             }
 
-            // NUEVA FUNCIÓN: Actualizar la mascotita
+            // FUNCIÓN ACTUALIZADA: Actualizar la mascotita según el nivel
             function updateMascotDisplay(currentLevel) {
                 if (!mascotDisplay) return; // Asegurarse de que el elemento existe
 
-                // Limpiar clases de etapa previas
-                mascotDisplay.classList.remove('mascot-stage-1', 'mascot-stage-2', 'mascot-stage-3', 'mascot-stage-4');
                 mascotDisplay.innerHTML = ''; // Limpiar el icono previo
 
                 let iconClass = '';
-                let stageClass = '';
+                // Limpiamos estilos inline que podrían venir de otras etapas para evitar conflictos
+                mascotDisplay.style.color = '';
+                mascotDisplay.style.backgroundImage = '';
+                mascotDisplay.style.webkitBackgroundClip = '';
+                mascotDisplay.style.webkitTextFillColor = '';
+                mascotDisplay.style.filter = '';
 
-                if (currentLevel.xp >= levels[9].xp) { // Nivel 10 (Leyenda)
-                    iconClass = 'fas fa-crown';
-                    stageClass = 'mascot-stage-4';
-                } else if (currentLevel.xp >= levels[6].xp) { // Nivel 7-9 (Orfebre, Visionaria, Titán)
-                    iconClass = 'fas fa-heart';
-                    stageClass = 'mascot-stage-3';
-                } else if (currentLevel.xp >= levels[2].xp) { // Nivel 3-6 (Artesana, Virtuosa, Maestra, Domadora)
-                    iconClass = 'fas fa-yarn'; // Sigue siendo ovillo pero más grande/color
-                    stageClass = 'mascot-stage-2';
-                } else { // Nivel 1-2 (Aprendiz, Promesa)
-                    iconClass = 'fas fa-yarn';
-                    stageClass = 'mascot-stage-1';
+
+                const levelIndex = levels.indexOf(currentLevel); // Obtener el índice base 0 del nivel actual
+
+                switch (levelIndex) {
+                    case 0: // Nivel 1: Aprendiz de Aguja
+                        iconClass = 'fas fa-seedling';
+                        mascotDisplay.style.color = '#a8e6cf'; // verde claro
+                        mascotDisplay.style.transform = 'scale(1)';
+                        mascotDisplay.style.fontSize = '2.5rem';
+                        break;
+                    case 1: // Nivel 2: Tejedora Promesa
+                        iconClass = 'fas fa-leaf';
+                        mascotDisplay.style.color = '#83d475'; // verde
+                        mascotDisplay.style.transform = 'scale(1.05)';
+                        mascotDisplay.style.fontSize = '2.8rem';
+                        break;
+                    case 2: // Nivel 3: Artesana del Hilo
+                        iconClass = 'fas fa-mitten';
+                        mascotDisplay.style.color = '#f7b731'; // naranja/amarillo
+                        mascotDisplay.style.transform = 'scale(1.1)';
+                        mascotDisplay.style.fontSize = '3.1rem';
+                        break;
+                    case 3: // Nivel 4: Virtuosa del Punto
+                        iconClass = 'fas fa-asterisk';
+                        mascotDisplay.style.color = '#f472b6'; // rosa
+                        mascotDisplay.style.transform = 'scale(1.15)';
+                        mascotDisplay.style.fontSize = '3.4rem';
+                        break;
+                    case 4: // Nivel 5: Maestra del Ganchillo
+                        iconClass = 'fas fa-hat-wizard';
+                        mascotDisplay.style.color = '#9333ea'; // morado oscuro
+                        mascotDisplay.style.transform = 'scale(1.2)';
+                        mascotDisplay.style.fontSize = '3.7rem';
+                        break;
+                    case 5: // Nivel 6: Domadora de Lanas
+                        iconClass = 'fas fa-palette';
+                        mascotDisplay.style.color = '#ff6b6b'; // rojo/naranja para creatividad
+                        mascotDisplay.style.transform = 'scale(1.25)';
+                        mascotDisplay.style.fontSize = '4.0rem';
+                        break;
+                    case 6: // Nivel 7: Orfebre Textil
+                        iconClass = 'fas fa-heart';
+                        mascotDisplay.style.color = '#c026d3'; // morado original
+                        mascotDisplay.style.transform = 'scale(1.3)';
+                        mascotDisplay.style.fontSize = '4.3rem';
+                        break;
+                    case 7: // Nivel 8: Visionaria del Patrón
+                        iconClass = 'fas fa-gem'; // Nuevo ícono: Gema
+                        mascotDisplay.style.color = '#4ade80'; // verde esmeralda
+                        mascotDisplay.style.transform = 'scale(1.35)';
+                        mascotDisplay.style.fontSize = '4.6rem';
+                        break;
+                    case 8: // Nivel 9: Titán del Amigurumi
+                        iconClass = 'fas fa-frog'; // Específico para Amigurumi
+                        mascotDisplay.style.color = '#22c55e'; // verde lima
+                        mascotDisplay.style.transform = 'scale(1.4)';
+                        mascotDisplay.style.fontSize = '4.9rem';
+                        break;
+                    case 9: // Nivel 10: Leyenda del Crochet
+                        iconClass = 'fas fa-crown';
+                        // Mantener el efecto de degradado para este nivel
+                        mascotDisplay.style.backgroundImage = 'linear-gradient(to right, #facc15, #f472b6)';
+                        mascotDisplay.style.webkitBackgroundClip = 'text';
+                        mascotDisplay.style.webkitTextFillColor = 'transparent';
+                        mascotDisplay.style.transform = 'scale(1.45)';
+                        mascotDisplay.style.filter = 'drop-shadow(0 0 15px rgba(250, 204, 21, 0.7));';
+                        mascotDisplay.style.fontSize = '5.2rem';
+                        break;
+                    default:
+                        iconClass = 'fas fa-yarn'; // Fallback por si acaso
+                        mascotDisplay.style.color = '#d0d0d0';
+                        mascotDisplay.style.transform = 'scale(1)';
+                        mascotDisplay.style.fontSize = '2.5rem';
+                        break;
                 }
 
-                mascotDisplay.classList.add(stageClass);
                 const iconElement = document.createElement('i');
                 iconElement.className = iconClass;
                 mascotDisplay.appendChild(iconElement);
@@ -1073,7 +1115,8 @@
             function showLoadingScreen(message, callback) {
                 subtleWelcomeText.textContent = message;
                 subtleWelcomeMessage.classList.remove('hidden');
-                void subtleWelcomeMessage.offsetWidth; 
+                // Force reflow to ensure the transition plays
+                void subtleWelcomeMessage.offsetWidth;
                 subtleWelcomeMessage.classList.add('show');
 
                 setTimeout(() => {
@@ -1085,7 +1128,7 @@
                         subtleWelcomeMessage.classList.remove('hide');
                         callback();
                     }, { once: true });
-                }, 2000);
+                }, 2000); // Display for 2 seconds
             }
 
 
@@ -1094,13 +1137,15 @@
                 loadUserData();
 
                 if (userData.name) {
+                    // If user has a name, show welcome back message and transition to app
                     document.getElementById('user-name-input').style.display = 'none';
                     document.getElementById('start-course-btn').style.display = 'none';
                     document.getElementById('welcome-overlay-title').textContent = `¡Bienvenida de nuevo, ${userData.name}!`;
                     document.getElementById('welcome-overlay-text').textContent = "Nos alegra tenerte de vuelta 💖";
-                    
+
+                    // Hide welcome overlay immediately as it's not needed
                     welcomeOverlay.style.display = 'none';
-                    mainAppContent.classList.add('hidden-content');
+                    mainAppContent.classList.add('hidden-content'); // Keep main content hidden initially
 
                     const message = `¡Bienvenida de nuevo, ${userData.name}! Preparando todo para tejer...`;
                     showLoadingScreen(message, () => {
@@ -1111,21 +1156,22 @@
                         resetDailyChecksIfNeeded();
                         completeLoginChallenge();
                         setupDailyChallengesUI();
-                        updateProfileUI(); // Se llama aquí para que la mascotita se inicialice
-                        showSection('inicio');
+                        updateProfileUI(); // Ensure mascot is initialized here
+                        showSection('inicio'); // Show initial section after loading
                     });
-                    
+
                 } else {
+                    // If no user name, show welcome overlay for name input
                     mainAppContent.classList.add('hidden-content');
                     welcomeOverlay.style.display = 'flex';
-                    subtleWelcomeMessage.classList.add('hidden');
-                    
+                    subtleWelcomeMessage.classList.add('hidden'); // Ensure loading screen is hidden
+
                     startCourseBtn.addEventListener('click', () => {
                         const userName = userNameInput.value.trim();
                         if (userName) {
                             userData.name = userName;
                             saveUserData();
-                            
+
                             welcomeOverlay.classList.add('fade-out');
                             welcomeOverlay.addEventListener('transitionend', function handler() {
                                 welcomeOverlay.removeEventListener('transitionend', handler);
@@ -1136,61 +1182,95 @@
                                     mainAppContent.classList.remove('hidden-content');
                                     mainAppContent.classList.add('visible-content');
                                     welcomeMessageSpan.textContent = `¡Hola, ${userData.name}!`;
-                                    
+
                                     resetDailyChecksIfNeeded();
                                     completeLoginChallenge();
                                     setupDailyChallengesUI();
-                                    updateProfileUI(); // Se llama aquí para que la mascotita se inicialice
-                                    showSection('inicio');
+                                    updateProfileUI(); // Ensure mascot is initialized here
+                                    showSection('inicio'); // Show initial section after loading
                                 });
-                            }, { once: true });
+                            }, { once: true }); // Use { once: true } for single-fire event listener
 
                         }
                     });
+                    // Allow pressing Enter in the input to trigger the button click
                     userNameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') startCourseBtn.click(); });
                 }
 
+                // Attach event listeners for navigation buttons
                 document.querySelectorAll('.nav-btn').forEach(button => button.addEventListener('click', () => showSection(button.dataset.section)));
+                // Setup other interactive components
                 setupAccordions();
                 setupQuizzes();
                 renderGlossary();
-                renderAllVideoLists();
+                renderAllVideoLists(); // This will now use lazy loading
                 setupCreations();
                 renderGallery();
                 setupBackToTopButton();
                 setupImageModal();
             }
-            
+
             function showSection(sectionId) {
+                // Remove 'active' class from all section contents and nav buttons
                 document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
                 document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                
+
+                // Add 'active' class to the target section and button
                 const targetSection = document.getElementById(sectionId);
                 const targetButton = document.querySelector(`.nav-btn[data-section="${sectionId}"]`);
                 if(targetSection) {
                     targetSection.classList.add('active');
                     if (targetButton) { targetButton.classList.add('active'); }
+                    // Re-render specific sections if needed when they become active
                     if (sectionId === 'galeria') renderGallery();
                     if (sectionId === 'inicio') setupDailyChallengesUI();
+                    if (sectionId === 'tutoriales') renderAllVideoLists(); // Ensure videos are re-rendered with lazy loading
                 }
             };
 
             function setupBackToTopButton() {
+                // Show/hide button based on scroll position
                 window.addEventListener('scroll', () => {
                     backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
                 });
+                // Scroll to top when button is clicked
                 backToTopBtn.addEventListener('click', () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
 
             function setupAccordions() {
-                const nivelesData = { principiante: [ { title: "1. Agarre del Ganchillo y Tensión del Hilo", content: "Existen dos formas principales de sostener el ganchillo: como un lápiz o como un cuchillo. Prueba ambas y elige la más cómoda. El hilo debe fluir por tus dedos con una tensión constante: ni muy apretado (cuesta tejer) ni muy suelto (los puntos quedan flojos)." }, { title: "2. Nudo Deslizado y Punto Cadeneta (cd)", content: "El nudo deslizado es el punto de partida de casi todos los proyectos. La cadeneta es una serie de bucles que forman la base. ¡Practica hacer cadenetas de tensión uniforme!" }, { title: "3. Punto Bajo (pb)", content: "Es el punto más corto y denso. Se usa mucho en amigurumis para que no se vea el relleno. Inserta el ganchillo, toma hebra, saca un bucle (tendrás 2 en el ganchillo), toma hebra de nuevo y pasa a través de los dos bucles." }, { title: "4. Tejer en Plano", content: "Significa tejer en filas, de un lado a otro. Al final de cada fila, se hace una cadeneta de subida y se gira la labor para empezar la siguiente fila en la dirección opuesta." }, { title: "5. Anillo Mágico y Tejer en Círculo", content: "El anillo mágico es una técnica para empezar a tejer en círculo sin dejar un agujero central. Es fundamental para gorros, amigurumis y mandalas. Se teje en espiral, sin cerrar las vueltas." }, { title: "6. Aumentos y Disminuciones", content: "Un aumento (aum) consiste en tejer dos o más puntos en el mismo punto base para ampliar el tejido. Una disminución (dism) une dos o más puntos en uno para reducirlo. Son claves para dar forma a tus proyectos." }, ], intermedio: [ { title: "1. Puntos Medios y Altos (pma, pa)", content: "El Punto Medio Alto (pma) y el Punto Alto (pa) son más altos que el punto bajo, lo que permite avanzar más rápido. Se crean tomando hebra antes de insertar el ganchillo, creando más bucles que se cierran en distintos pasos." }, { title: "2. Tejer en BLO y FLO", content: "Cada punto tiene dos hebras (delantera y trasera). Tejer solo en la hebra trasera (Back Loop Only) o solo en la hebra delantera (Front Loop Only) crea texturas acanaladas y bordes decorativos." }, { title: "3. Cambios de Color Limpios", content: "Para cambiar de color sin que se note, realiza el último paso del último punto antes del cambio con el nuevo color. Esto crea una transición mucho más limpia y profesional." }, { title: "4. Lectura de Patrones (Escritos y Gráficos)", content: "Aprende a descifrar las abreviaturas de los patrones escritos (ej: 2pb, 1aum) y los símbolos de los patrones gráficos. Es como aprender un nuevo idioma que te abrirá un mundo de proyectos." }, { title: "5. Puntos con Textura: Puff, Popcorn y Garbanzo", content: "Estos puntos especiales crean volumen y texturas tridimensionales. Se forman tejiendo múltiples lazadas o puntos altos en un mismo punto base y cerrándolos juntos de diferentes maneras." }, ], avanzado: [ { title: "1. Puntos en Relieve", content: "Se tejen alrededor del 'poste' del punto de la vuelta anterior (por delante o por detrás), creando una textura tridimensional que imita el tejido a dos agujas. Ideal para elásticos de gorros y puños." }, { title: "2. Tapestry y Jacquard Crochet", content: "Técnicas de 'colorwork' para crear dibujos y patrones con múltiples colores en una misma fila. En Tapestry, el hilo que no se usa se esconde dentro de los puntos; en Jacquard, se deja flotando por detrás." }, { title: "3. Punto Tunecino Básico", content: "Es un híbrido entre crochet y tejido a dos agujas. Se usa un ganchillo largo y los puntos se recogen en una pasada y se cierran en otra, creando una tela densa y única." }, { title: "4. Construcción de Prendas", content: "Aprende a unir piezas para crear jerséis, cardigans y otras prendas. Entiende conceptos como sisas, escotes y costuras invisibles para un acabado profesional." }, { title: "5. Bloqueo de Proyectos", content: "Es el proceso de mojar y dar forma a tu tejido terminado, fijándolo con alfileres hasta que se seque. Es esencial para que las prendas queden con la forma y caída correctas, y los puntos se asienten." }, ] };
+                // Data for accordion sections (Niveles)
+                const nivelesData = {
+                    principiante: [
+                        { title: "1. Agarre del Ganchillo y Tensión del Hilo", content: "Existen dos formas principales de sostener el ganchillo: como un lápiz o como un cuchillo. Prueba ambas y elige la más cómoda. El hilo debe fluir por tus dedos con una tensión constante: ni muy apretado (cuesta tejer) ni muy suelto (los puntos quedan flojos)." },
+                        { title: "2. Nudo Deslizado y Punto Cadeneta (cd)", content: "El nudo deslizado es el punto de partida de casi todos los proyectos. La cadeneta es una serie de bucles que forman la base. ¡Practica hacer cadenetas de tensión uniforme!" },
+                        { title: "3. Punto Bajo (pb)", content: "Es el punto más corto y denso. Se usa mucho en amigurumis para que no se vea el relleno. Inserta el ganchillo, toma hebra, saca un bucle (tendrás 2 en el ganchillo), toma hebra de nuevo y pasa a través de los dos bucles." },
+                        { title: "4. Tejer en Plano", content: "Significa tejer en filas, de un lado a otro. Al final de cada fila, se hace una cadeneta de subida y se gira la labor para empezar la siguiente fila en la dirección opuesta." },
+                        { title: "5. Anillo Mágico y Tejer en Círculo", content: "El anillo mágico es una técnica para empezar a tejer en círculo sin dejar un agujero central. Es fundamental para gorros, amigurumis y mandalas. Se teje en espiral, sin cerrar las vueltas." },
+                        { title: "6. Aumentos y Disminuciones", content: "Un aumento (aum) consiste en tejer dos o más puntos en el mismo punto base para ampliar el tejido. Una disminución (dism) une dos o más puntos en uno para reducirlo. Son claves para dar forma a tus proyectos." },
+                    ],
+                    intermedio: [
+                        { title: "1. Puntos Medios y Altos (pma, pa)", content: "El Punto Medio Alto (pma) y el Punto Alto (pa) son más altos que el punto bajo, lo que permite avanzar más rápido. Se crean tomando hebra antes de insertar el ganchillo, creando más bucles que se cierran en distintos pasos." },
+                        { title: "2. Tejer en BLO y FLO", content: "Cada punto tiene dos hebras (delantera y trasera). Tejer solo en la hebra trasera (Back Loop Only) o solo en la hebra delantera (Front Loop Only) crea texturas acanaladas y bordes decorativos." },
+                        { title: "3. Cambios de Color Limpios", content: "Para cambiar de color sin que se note, realiza el último paso del último punto antes del cambio con el nuevo color. Esto crea una transición mucho más limpia y profesional." },
+                        { title: "4. Lectura de Patrones (Escritos y Gráficos)", content: "Aprende a descifrar las abreviaturas de los patrones escritos (ej: 2pb, 1aum) y los símbolos de los patrones gráficos. Es como aprender un nuevo idioma que te abrirá un mundo de proyectos." },
+                        { title: "5. Puntos con Textura: Puff, Popcorn y Garbanzo", content: "Estos puntos especiales crean volumen y texturas tridimensionales. Se forman tejiendo múltiples lazadas o puntos altos en un mismo punto base y cerrándolos juntos de diferentes maneras." },
+                    ],
+                    avanzado: [
+                        { title: "1. Puntos en Relieve", content: "Se tejen alrededor del 'poste' del punto de la vuelta anterior (por delante o por detrás), creando una textura tridimensional que imita el tejido a dos agujas. Ideal para elásticos de gorros y puños." },
+                        { title: "2. Tapestry y Jacquard Crochet", content: "Técnicas de 'colorwork' para crear dibujos y patrones con múltiples colores en una misma fila. En Tapestry, el hilo que no se usa se esconde dentro de los puntos; en Jacquard, se deja flotando por detrás." },
+                        { title: "3. Punto Tunecino Básico", content: "Es un híbrido entre crochet y tejido a dos agujas. Se usa un ganchillo largo y los puntos se recogen en una pasada y se cierran en otra, creando una tela densa y única." },
+                        { title: "4. Construcción de Prendas", content: "Aprende a unir piezas para crear jerséis, cardigans y otras prendas. Entiende conceptos como sisas, escotes y costuras invisibles para un acabado profesional." },
+                        { title: "5. Bloqueo de Proyectos", content: "Es el proceso de mojar y dar forma a tu tejido terminado, fijándolo con alfileres hasta que se seque. Es esencial para que las prendas queden con la forma y caída correctas, y los puntos se asienten." },
+                    ]
+                };
 
+                // Render each level's accordion
                 ['principiante', 'intermedio', 'avanzado'].forEach(level => {
                     const container = document.getElementById(`${level}-accordion`);
-                    if (!container) return;
-                    container.innerHTML = '';
+                    if (!container) return; // Exit if container not found
+                    container.innerHTML = ''; // Clear previous content
                     nivelesData[level].forEach(item => {
                         const itemDiv = document.createElement('div');
                         itemDiv.className = 'accordion-item';
@@ -1199,10 +1279,12 @@
                     });
                 });
 
+                // Add event listeners to all accordion buttons
                 document.querySelectorAll('.accordion-button').forEach(button => {
                     button.addEventListener('click', (e) => {
                         const content = e.currentTarget.nextElementSibling;
                         e.currentTarget.classList.toggle('active');
+                        // Toggle max-height for accordion animation
                         content.style.maxHeight = e.currentTarget.classList.contains('active') ? content.scrollHeight + "px" : null;
                     });
                 });
@@ -1210,8 +1292,47 @@
 
             // --- QUIZZES ---
             function setupQuizzes() {
-                const quizzes = { principiante: [ { q: "¿Cuál es el punto más corto y denso del crochet?", o: { a: "Punto Alto", b: "Punto Bajo", c: "Punto Cadeneta" }, c: "b" }, { q: "¿Qué técnica se usa para empezar un amigurumi sin un agujero en el centro?", o: { a: "Nudo Deslizado", b: "Anillo Mágico", c: "Punto Deslizado" }, c: "b" }, { q: "Un 'aumento' sirve para...", o: { a: "Terminar la labor", b: "Hacer el tejido más pequeño", c: "Hacer el tejido más grande" }, c: "c" }, { q: "¿Cómo se llama la base de casi todos los proyectos, formada por una serie de bucles?", o: { a: "Punto Bajo", b: "Anillo Mágico", c: "Cadeneta" }, c: "c" }, { q: "Para tejer en plano, al final de cada fila, debes...", o: { a: "Cortar el hilo", b: "Hacer un aumento", c: "Hacer una cadeneta de subida y girar" }, c: "c" }, { q: "Una 'disminución' hace que tu tejido sea...", o: { a: "Más ancho", b: "Más estrecho", c: "Más alto" }, c: "b" }, { q: "¿Qué significa 'pb' en un patrón?", o: { a: "Punto Bonito", b: "Punto Bajo", c: "Punto Base" }, c: "b" }, { q: "¿Cuántos bucles tienes en el ganchillo JUSTO ANTES de hacer la última lazada de un Punto Bajo?", o: { a: "Uno", b: "Dos", c: "Tres" }, c: "b" }, { q: "El nudo deslizado se usa para...", o: { a: "Unir dos piezas", b: "Crear una textura", c: "Iniciar el tejido" }, c: "c" }, { q: "Para que un amigurumi quede firme y no se vea el relleno, ¿qué punto usarías?", o: { a: "Punto Alto", b: "Punto Cadeneta", c: "Punto Bajo" }, c: "c" } ], intermedio: [ { q: "¿Qué significa tejer en 'BLO'?", o: { a: "Solo en la hebra bonita", b: "Solo en la hebra trasera", c: "Solo en bucles largos" }, c: "b" }, { q: "¿Para qué se usa un patrón gráfico?", o: { a: "Para ver fotos del proyecto", b: "Para leer los pasos escritos", c: "Para visualizar los puntos como símbolos" }, c: "c" }, { q: "El punto Popcorn se caracteriza por crear...", o: { a: "Una textura plana", b: "Volumen y una 'bolita' que resalta", c: "Agujeros en el tejido" }, c: "b" }, { q: "¿Cuál de estos puntos es el más alto?", o: { a: "Punto Bajo (pb)", b: "Punto Medio Alto (pma)", c: "Punto Alto (pa)" }, c: "c" }, { q: "Para hacer un cambio de color perfecto, ¿cuándo introduces el nuevo color?", o: { a: "Al inicio de la vuelta", b: "En el último paso del punto anterior", c: "Después de terminar la vuelta" }, c: "b" }, { q: "La abreviatura 'pma' corresponde a:", o: { a: "Punto Muy Ancho", b: "Punto Medio Alto", c: "Punto Mágico" }, c: "b" }, { q: "¿Qué punto usarías para moverte por el tejido sin añadir altura?", o: { a: "Punto Bajo", b: "Punto Deslizado", c: "Punto Alto" }, c: "b" }, { q: "'Leer un patrón' implica entender...", o: { a: "Solo los dibujos", b: "Solo el tipo de lana", c: "Abreviaturas y símbolos" }, c: "c" }, { q: "¿Qué punto NO es un punto de textura que crea volumen?", o: { a: "Punto Puff", b: "Punto Popcorn", c: "Punto Cadeneta" }, c: "c" }, { q: "Tejer en 'FLO' se usa a menudo para...", o: { a: "Hacer el tejido más grueso", b: "Crear bordes o añadir detalles en el frente", c: "Cerrar un anillo mágico" }, c: "b" } ] , avanzado: [ { q: "En Tapestry, el hilo que no usas...", o: { a: "Se corta", b: "Se esconde dentro de los puntos", c: "Se deja colgando por detrás" }, c: "b" }, { q: "¿Qué es el 'bloqueo' de un proyecto?", o: { a: "Coser las piezas", b: "Deshacer una parte", c: "Mojar y dar forma al tejido para un acabado perfecto" }, c: "c" }, { q: "Los puntos en relieve se tejen alrededor del...", o: { a: "Bucle superior del punto", b: "'Poste' o cuerpo del punto", c: "Espacio entre puntos" }, c: "b" }, { q: "El crochet tunecino se caracteriza por...", o: { a: "Usar dos ganchillos", b: "Recoger muchos puntos en el ganchillo a la vez", c: "Ser idéntico al crochet normal" }, c: "b" }, { q: "Para crear los elásticos de un gorro, ¿qué técnica es ideal?", o: { a: "Puntos en Relieve", b: "Tapestry", c: "Punto Cadeneta" }, c: "a" }, { q: "El 'colorwork' se refiere a técnicas para...", o: { a: "Tejer con un solo color", b: "Tejer con muchos colores para crear dibujos", c: "Cambiar el grosor del hilo" }, c: "b" }, { q: "Construir una prenda implica saber sobre...", o: { a: "Solo tejer cuadrados", b: "Sisas, escotes y uniones", c: "Solo hacer amigurumis" }, c: "b" }, { q: "¿Qué técnica es un híbrido entre ganchillo y dos agujas?", o: { a: "Intarsia", b: "Crochet Tunecino", c: "Tapestry" }, c: "b" }, { q: "El objetivo principal del bloqueo es...", o: { a: "Hacer el tejido más pequeño", b: "Darle la forma y caída correcta a la pieza", c: "Cambiar el color del tejido" }, c: "b" }, { q: "La diferencia principal entre Tapestry e Intarsia es...", o: { a: "No hay diferencia", b: "Cómo se maneja el hilo que no se usa", c: "Los colores que se utilizan" }, c: "b" } ] };
+                const quizzes = {
+                    principiante: [
+                        { q: "¿Cuál es el punto más corto y denso del crochet?", o: { a: "Punto Alto", b: "Punto Bajo", c: "Punto Cadeneta" }, c: "b" },
+                        { q: "¿Qué técnica se usa para empezar un amigurumi sin un agujero en el centro?", o: { a: "Nudo Deslizado", b: "Anillo Mágico", c: "Punto Deslizado" }, c: "b" },
+                        { q: "Un 'aumento' sirve para...", o: { a: "Terminar la labor", b: "Hacer el tejido más pequeño", c: "Hacer el tejido más grande" }, c: "c" },
+                        { q: "¿Cómo se llama la base de casi todos los proyectos, formada por una serie de bucles?", o: { a: "Punto Bajo", b: "Anillo Mágico", c: "Cadeneta" }, c: "c" },
+                        { q: "Para tejer en plano, al final de cada fila, debes...", o: { a: "Cortar el hilo", b: "Hacer un aumento", c: "Hacer una cadeneta de subida y girar" }, c: "c" },
+                        { q: "Una 'disminución' hace que tu tejido sea...", o: { a: "Más ancho", b: "Más estrecho", c: "Más alto" }, c: "b" },
+                        { q: "¿Qué significa 'pb' en un patrón?", o: { a: "Punto Bonito", b: "Punto Bajo", c: "Punto Base" }, c: "b" },
+                        { q: "¿Cuántos bucles tienes en el ganchillo JUSTO ANTES de hacer la última lazada de un Punto Bajo?", o: { a: "Uno", b: "Dos", c: "Tres" }, c: "b" },
+                        { q: "El nudo deslizado se usa para...", o: { a: "Unir dos piezas", b: "Crear una textura", c: "Iniciar el tejido" }, c: "c" },
+                        { q: "Para que un amigurumi quede firme y no se vea el relleno, ¿qué punto usarías?", o: { a: "Punto Alto", b: "Punto Cadeneta", c: "Punto Bajo" }, c: "c" }
+                    ],
+                    intermedio: [
+                        { q: "¿Qué significa tejer en 'BLO'?", o: { a: "Solo en la hebra bonita", b: "Solo en la hebra trasera", c: "Solo en bucles largos" }, c: "b" },
+                        { q: "¿Para qué se usa un patrón gráfico?", o: { a: "Para ver fotos del proyecto", b: "Para leer los pasos escritos", c: "Para visualizar los puntos como símbolos" }, c: "c" },
+                        { q: "El punto Popcorn se caracteriza por crear...", o: { a: "Una textura plana", b: "Volumen y una 'bolita' que resalta", c: "Agujeros en el tejido" }, c: "b" },
+                        { q: "¿Cuál de estos puntos es el más alto?", o: { a: "Punto Bajo (pb)", b: "Punto Medio Alto (pma)", c: "Punto Alto (pa)" }, c: "c" },
+                        { q: "Para hacer un cambio de color perfecto, ¿cuándo introduces el nuevo color?", o: { a: "Al inicio de la vuelta", b: "En el último paso del punto anterior", c: "Después de terminar la vuelta" }, c: "b" },
+                        { q: "La abreviatura 'pma' corresponde a:", o: { a: "Punto Muy Ancho", b: "Punto Medio Alto", c: "Punto Mágico" }, c: "b" },
+                        { q: "¿Qué punto usarías para moverte por el tejido sin añadir altura?", o: { a: "Punto Bajo", b: "Punto Deslizado", c: "Punto Alto" }, c: "b" },
+                        { q: "'Leer un patrón' implica entender...", o: { a: "Solo los dibujos", b: "Solo el tipo de lana", c: "Abreviaturas y símbolos" }, c: "c" },
+                        { q: "¿Qué punto NO es un punto de textura que crea volumen?", o: { a: "Punto Puff", b: "Punto Popcorn", c: "Punto Cadeneta" }, c: "c" },
+                        { q: "Tejer en 'FLO' se usa a menudo para...", o: { a: "Hacer el tejido más grueso", b: "Crear bordes o añadir detalles en el frente", c: "Cerrar un anillo mágico" }, c: "b" }
+                    ],
+                    avanzado: [
+                        { q: "En Tapestry, el hilo que no usas...", o: { a: "Se corta", b: "Se esconde dentro de los puntos", c: "Se deja colgando por detrás" }, c: "b" },
+                        { q: "¿Qué es el 'bloqueo' de un proyecto?", o: { a: "Coser las piezas", b: "Deshacer una parte", c: "Mojar y dar forma al tejido para un acabado perfecto" }, c: "c" },
+                        { q: "Los puntos en relieve se tejen alrededor del...", o: { a: "Bucle superior del punto", b: "'Poste' o cuerpo del punto", c: "Espacio entre puntos" }, c: "b" },
+                        { q: "El crochet tunecino se caracteriza por...", o: { a: "Usar dos ganchillos", b: "Recoger muchos puntos en el ganchillo a la vez", c: "Ser idéntico al crochet normal" }, c: "b" },
+                        { q: "Para crear los elásticos de un gorro, ¿qué técnica es ideal?", o: { a: "Puntos en Relieve", b: "Tapestry", c: "Punto Cadeneta" }, c: "a" },
+                        { q: "El 'colorwork' se refiere a técnicas para...", o: { a: "Tejer con un solo color", b: "Tejer con muchos colores para crear dibujos", c: "Cambiar el grosor del hilo" }, c: "b" },
+                        { q: "Construir una prenda implica saber sobre...", o: { a: "Solo tejer cuadrados", b: "Sisas, escotes y uniones", c: "Solo hacer amigurumis" }, c: "b" },
+                        { q: "¿Qué técnica es un híbrido entre ganchillo y dos agujas?", o: { a: "Intarsia", b: "Crochet Tunecino", c: "Tapestry" }, c: "b" },
+                        { q: "El objetivo principal del bloqueo es...", o: { a: "Hacer el tejido más pequeño", b: "Darle la forma y caída correcta a la pieza", c: "Cambiar el color del tejido" }, c: "b" },
+                        { q: "La diferencia principal entre Tapestry e Intarsia es...", o: { a: "No hay diferencia", b: "Cómo se maneja el hilo que no se usa", c: "Los colores que se utilizan" }, c: "b" }
+                    ]
+                };
+                // Update best scores display for all quizzes on setup
                 Object.keys(quizzes).forEach(id => updateBestScoreDisplay(id, quizzes));
+                // Add event listeners to quiz buttons
                 document.querySelectorAll('.quiz-btn').forEach(button => button.addEventListener('click', (e) => toggleQuiz(e.currentTarget.dataset.quizId, quizzes)));
             }
 
@@ -1223,7 +1344,7 @@
                         closeQuiz(c);
                     }
                 });
-                
+
                 if (existingQuiz && existingQuiz.classList.contains('active-quiz')) {
                     // If the clicked quiz is already open, close it
                     closeQuiz(existingQuiz);
@@ -1241,33 +1362,41 @@
                     container = document.createElement('div');
                     container.id = `quiz-${quizId}`;
                     container.className = 'quiz-container';
+                    // Insert the quiz container after the quiz button's next sibling (the score display)
                     button.nextElementSibling.insertAdjacentElement('afterend', container);
                 } else {
+                    // If it exists, remove closing animation class
                     container.classList.remove('closing-quiz');
                 }
-                
+
+                // Generate HTML content for the quiz questions and options
                 let contentHTML = `<div class="quiz-padding-wrapper">${quizzes[quizId].map((q, i) => `<div class="mb-4"><p class="quiz-question">${i + 1}. ${q.q}</p>${Object.keys(q.o).map(key => `<label class="quiz-option"><input type="radio" name="q${quizId}-${i}" value="${key}"> ${key.toUpperCase()}. ${q.o[key]}</label>`).join('')}</div>`).join('')}<button class="btn submit-quiz-btn" data-quiz-id="${quizId}">Verificar Respuestas</button><p class="quiz-result mt-4" id="result-${quizId}"></p><button class="btn mt-4 bg-gray-600 hover:bg-gray-700 close-quiz-btn" data-quiz-id="${quizId}">Cerrar Cuestionario</button></div>`;
                 container.innerHTML = contentHTML;
 
+                // Add event listeners to the new buttons within the quiz
                 container.querySelector('.submit-quiz-btn').addEventListener('click', () => checkQuizAnswers(quizId, quizzes));
                 container.querySelector('.close-quiz-btn').addEventListener('click', () => closeQuiz(container));
 
+                // Add active class after a small delay to trigger CSS transition
                 setTimeout(() => {
                     container.classList.add('active-quiz');
-                }, 10); 
+                }, 10);
             }
 
             function closeQuiz(container) {
                 if (!container) return;
-                container.classList.remove('active-quiz'); 
+                // Start closing animation
+                container.classList.remove('active-quiz');
                 container.classList.add('closing-quiz');
-                
+
+                // Remove the element from DOM after transition
                 container.addEventListener('transitionend', function handler() {
                     container.removeEventListener('transitionend', handler);
+                    // Only remove if it still has the closing class (prevents issues if re-opened quickly)
                     if (container.classList.contains('closing-quiz')) {
                         container.remove();
                     }
-                }, { once: true });
+                }, { once: true }); // Ensure event listener is removed after first use
             }
 
             function checkQuizAnswers(quizId, quizzes) {
@@ -1275,20 +1404,24 @@
                 if (!container) return;
                 const resultEl = container.querySelector(`#result-${quizId}`);
                 let correct = 0;
+                // Iterate through questions and check answers
                 quizzes[quizId].forEach((q, i) => {
                     const selected = container.querySelector(`input[name="q${quizId}-${i}"]:checked`);
                     if (selected && selected.value === q.c) correct++;
                 });
 
+                // Update best score and add XP if new best score and passing grade
                 if (correct > (userData.bestScores[quizId] || 0)) {
                     userData.bestScores[quizId] = correct;
-                    if (correct / quizzes[quizId].length >= 0.6) addXP(50);
+                    if (correct / quizzes[quizId].length >= 0.6) addXP(50); // Add XP for passing
                     saveUserData();
                     updateBestScoreDisplay(quizId, quizzes);
                 }
+                // Display result message
                 resultEl.textContent = `Tu resultado: ${correct} de ${quizzes[quizId].length} correctas.`;
                 resultEl.className = `quiz-result mt-4 ${correct > quizzes[quizId].length / 2 ? 'text-green-400' : 'text-red-400'}`;
 
+                // Automatically close quiz after a delay
                 setTimeout(() => {
                     closeQuiz(container);
                 }, 3000);
@@ -1303,7 +1436,25 @@
 
             // --- GLOSSARY ---
             function renderGlossary() {
-                const glossaryData = [ { term: 'pc, cad', name: 'Punto Cadeneta', desc: 'El punto más básico que forma una cadena de bucles. Es el inicio de casi todo.' }, { term: 'pr, pd, pe', name: 'Punto Raso / Deslizado', desc: 'El punto más plano. Se usa para unir piezas o moverse por el tejido sin añadir altura.' }, { term: 'pb, mp', name: 'Punto Bajo / Medio Punto', desc: 'Punto corto y denso, ideal para amigurumis y tejidos firmes.' }, { term: 'pma, mpa', name: 'Punto Medio Alto', desc: 'De altura intermedia entre el punto bajo y el punto alto.' }, { term: 'pa, pv', name: 'Punto Alto / Vareta', desc: 'Un punto alto y flexible que permite avanzar rápidamente en el tejido.' }, { term: 'pad', name: 'Punto Alto Doble', desc: 'Aún más alto que el punto alto, se crea con dos lazadas iniciales.' }, { term: 'aum', name: 'Aumento', desc: 'Tejer dos o más puntos en el mismo punto base para ampliar la labor.' }, { term: 'dism', name: 'Disminución', desc: 'Unir dos o más puntos en uno solo para reducir la labor.' }, { term: 'AM', name: 'Anillo Mágico', desc: 'Técnica para empezar a tejer en círculo (amigurumis, gorros) sin dejar un agujero central.' }, { term: 'BLO', name: 'Back Loop Only', desc: 'Tejer tomando solo la hebra trasera del punto. Crea una textura acanalada.' }, { term: 'FLO', name: 'Front Loop Only', 'desc': 'Tejer tomando solo la hebra delantera del punto. Ideal para crear bordes o añadir detalles.' }, { term: 'sc', name: 'Single Crochet (Inglés)', desc: 'Equivalente al Punto Bajo (pb) en español.' }, { term: 'hdc', name: 'Half Double Crochet (Inglés)', desc: 'Equivalente al Punto Medio Alto (pma) en español.' }, { term: 'dc', name: 'Double Crochet (Inglés)', desc: 'Equivalente al Punto Alto (pa) en español.' }, { term: 'sl st', name: 'Slip Stitch (Inglés)', desc: 'Equivalente al Punto Raso o Deslizado (pr) en español.' }, { term: 'ch', name: 'Chain (Inglés)', desc: 'Equivalente a la Cadeneta (cad) en español.' }, ];
+                const glossaryData = [
+                    { term: 'pc, cad', name: 'Punto Cadeneta', desc: 'El punto más básico que forma una cadena de bucles. Es el inicio de casi todo.' },
+                    { term: 'pr, pd, pe', name: 'Punto Raso / Deslizado', desc: 'El punto más plano. Se usa para unir piezas o moverse por el tejido sin añadir altura.' },
+                    { term: 'pb, mp', name: 'Punto Bajo / Medio Punto', desc: 'Punto corto y denso, ideal para amigurumis y tejidos firmes.' },
+                    { term: 'pma, mpa', name: 'Punto Medio Alto', desc: 'De altura intermedia entre el punto bajo y el punto alto.' },
+                    { term: 'pa, pv', name: 'Punto Alto / Vareta', desc: 'Un punto alto y flexible que permite avanzar rápidamente en el tejido.' },
+                    { term: 'pad', name: 'Punto Alto Doble', desc: 'Aún más alto que el punto alto, se crea con dos lazadas iniciales.' },
+                    { term: 'aum', name: 'Aumento', desc: 'Tejer dos o más puntos en el mismo punto base para ampliar la labor.' },
+                    { term: 'dism', name: 'Disminución', desc: 'Unir dos o más puntos en uno solo para reducir la labor.' },
+                    { term: 'AM', name: 'Anillo Mágico', desc: 'Técnica para empezar a tejer en círculo (amigurumis, gorros) sin dejar un agujero central.' },
+                    { term: 'BLO', name: 'Back Loop Only', desc: 'Tejer tomando solo la hebra trasera del punto. Crea una textura acanalada.' },
+                    { term: 'FLO', name: 'Front Loop Only', 'desc': 'Tejer tomando solo la hebra delantera del punto. Ideal para crear bordes o añadir detalles.' },
+                    { term: 'sc', name: 'Single Crochet (Inglés)', desc: 'Equivalente al Punto Bajo (pb) en español.' },
+                    { term: 'hdc', name: 'Half Double Crochet (Inglés)', desc: 'Equivalente al Punto Medio Alto (pma) en español.' },
+                    { term: 'dc', name: 'Double Crochet (Inglés)', desc: 'Equivalente al Punto Alto (pa) en español.' },
+                    { term: 'sl st', name: 'Slip Stitch (Inglés)', desc: 'Equivalente al Punto Raso o Deslizado (pr) en español.' },
+                    { term: 'ch', name: 'Chain (Inglés)', desc: 'Equivalente a la Cadeneta (cad) en español.' },
+                ];
+                // Generate HTML for glossary items and insert into the list
                 document.getElementById('glossary-list').innerHTML = glossaryData.map(item => `<div class="card bg-gray-800 p-4"><h4 class="text-xl font-semibold text-pink-400 mb-2">${item.name}</h4><p class="text-gray-400 text-sm mb-2 font-mono">Abreviaturas: ${item.term}</p><p class="text-gray-300">${item.desc}</p></div>`).join('');
             }
 
@@ -1348,6 +1499,7 @@
             };
 
             function renderAllVideoLists() {
+                // Render video lists for all levels
                 ['principiante', 'intermedio', 'avanzado'].forEach(level => renderVideoList(level, videoData[level]));
             }
 
@@ -1356,9 +1508,46 @@
                 if (!container) return;
                 container.innerHTML = videos.map(video => {
                     const isWatched = userData.watchedVideos.includes(video.title);
-                    return `<div class="bg-gray-900 md:rounded-xl overflow-hidden shadow-lg"><div class="relative w-full bg-black" style="padding-bottom: 56.25%;">${video.id ? `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${video.id}" title="${video.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : ''}</div><div class="p-4 text-center"><h3 class="text-lg font-semibold text-pink-400">${video.title}</h3><button class="watched-btn mt-3 ${isWatched ? 'completed' : ''}" data-video-title="${video.title}" data-video-level="${level}">${isWatched ? '<i class="fas fa-check-circle mr-2"></i>Visto' : '<i class="far fa-eye mr-2"></i>Marcar como visto'}</button></div></div>`;
+                    // Construct YouTube thumbnail URL for lazy loading
+                    const thumbnailUrl = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    return `
+                        <div class="bg-gray-900 md:rounded-xl overflow-hidden shadow-lg">
+                            <div class="relative w-full bg-black video-placeholder" data-video-id="${video.id}" style="padding-bottom: 56.25%; background-image: url('${thumbnailUrl}'); background-size: cover; background-position: center;">
+                                <div class="absolute inset-0 flex items-center justify-center cursor-pointer">
+                                    <i class="fas fa-play-circle text-white text-6xl opacity-80 hover:opacity-100 transition-opacity"></i>
+                                </div>
+                            </div>
+                            <div class="p-4 text-center">
+                                <h3 class="text-lg font-semibold text-pink-400">${video.title}</h3>
+                                <button class="watched-btn mt-3 ${isWatched ? 'completed' : ''}" data-video-title="${video.title}" data-video-level="${level}">
+                                    ${isWatched ? '<i class="fas fa-check-circle mr-2"></i>Visto' : '<i class="far fa-eye mr-2"></i>Marcar como visto'}
+                                </button>
+                            </div>
+                        </div>`;
                 }).join('');
+
+                // Add event listeners for the "watched" buttons
                 container.querySelectorAll('.watched-btn').forEach(b => b.addEventListener('click', handleWatchedButtonClick));
+
+                // Add event listeners for the video placeholders
+                container.querySelectorAll('.video-placeholder').forEach(placeholder => {
+                    placeholder.addEventListener('click', (e) => {
+                        const videoId = e.currentTarget.dataset.videoId;
+                        const iframe = document.createElement('iframe');
+                        iframe.className = "absolute top-0 left-0 w-full h-full";
+                        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`; // Add autoplay for better UX
+                        iframe.title = e.currentTarget.nextElementSibling.querySelector('h3').textContent; // Get title from sibling h3
+                        iframe.frameBorder = "0";
+                        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                        iframe.allowFullscreen = true;
+
+                        // Replace the placeholder content with the iframe
+                        e.currentTarget.innerHTML = ''; // Clear placeholder content
+                        e.currentTarget.appendChild(iframe);
+                        e.currentTarget.style.backgroundImage = 'none'; // Remove background image
+                        e.currentTarget.classList.remove('video-placeholder'); // Remove class to prevent re-triggering
+                    });
+                });
             }
 
             function handleWatchedButtonClick(event) {
@@ -1367,123 +1556,139 @@
                 const videoIndex = userData.watchedVideos.indexOf(videoTitle);
 
                 if (videoIndex > -1) {
+                    // If already watched, unmark it
                     userData.watchedVideos.splice(videoIndex, 1);
                     button.classList.remove('completed');
                     button.innerHTML = '<i class="far fa-eye mr-2"></i>Marcar como visto';
                 } else {
+                    // If not watched, mark it as watched
                     userData.watchedVideos.push(videoTitle);
                     button.classList.add('completed');
                     button.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Visto';
 
+                    // Complete daily challenge if not already done
                     if (!userData.dailyChecks.videoWatched.done) {
                         userData.dailyChecks.videoWatched.done = true;
-                        setupDailyChallengesUI();
+                        setupDailyChallengesUI(); // Update UI for daily challenges
                     }
                 }
-                saveUserData();
+                saveUserData(); // Save updated user data
             }
-            
+
             // --- CREATIONS & GALLERY ---
             function setupCreations() {
                 const imageInput = document.getElementById('image-input');
                 const imagePreview = document.getElementById('image-preview');
                 const titleInput = document.getElementById('image-title-input');
                 const uploadBtn = document.getElementById('upload-image-btn');
-                let imageDataUrl = null;
+                let imageDataUrl = null; // Variable to store the base64 image data
 
                 imageInput.addEventListener('change', () => {
                     const file = imageInput.files[0];
                     if (file) {
                         const reader = new FileReader();
                         reader.onload = (e) => {
-                            imageDataUrl = e.target.result;
+                            imageDataUrl = e.target.result; // Store base64 data
                             imagePreview.src = imageDataUrl;
                             imagePreview.classList.remove('hidden');
-                            uploadBtn.disabled = false;
+                            uploadBtn.disabled = false; // Enable upload button
                         };
-                        reader.readAsDataURL(file);
+                        reader.readAsDataURL(file); // Read file as base64
                     }
                 });
 
                 uploadBtn.addEventListener('click', () => {
-                    if (!imageDataUrl) return;
+                    if (!imageDataUrl) return; // Don't proceed if no image data
+
                     const newCreation = {
-                        id: Date.now(),
-                        title: titleInput.value || "Mi Creación",
-                        date: new Date().toLocaleDateString('es-ES'),
+                        id: Date.now(), // Unique ID for the creation
+                        title: titleInput.value || "Mi Creación", // Use input title or default
+                        date: new Date().toLocaleDateString('es-ES'), // Current date
                         imageData: imageDataUrl,
-                        favorite: false,
+                        favorite: false, // Default to not favorite
                     };
-                    userData.creations.unshift(newCreation);
-                    
+                    userData.creations.unshift(newCreation); // Add new creation to the beginning of the array
+
+                    // Complete daily challenge if not already done
                     if (!userData.dailyChecks.photoUploaded.done) {
                         userData.dailyChecks.photoUploaded.done = true;
-                        setupDailyChallengesUI();
+                        setupDailyChallengesUI(); // Update UI for daily challenges
                     }
-                    
-                    saveUserData();
+
+                    saveUserData(); // Save updated user data
+                    // Reset form fields and hide preview
                     imageInput.value = '';
                     titleInput.value = '';
                     imagePreview.classList.add('hidden');
                     uploadBtn.disabled = true;
-                    showSection('galeria');
+                    imageDataUrl = null; // Clear image data URL
+                    showSection('galeria'); // Navigate to gallery to see the new creation
                 });
             }
 
             function renderGallery() {
                 const grid = document.getElementById('gallery-grid');
                 const emptyMsg = document.getElementById('gallery-empty-message');
-                grid.innerHTML = '';
+                grid.innerHTML = ''; // Clear existing gallery content
+
                 if (userData.creations.length === 0) {
-                    emptyMsg.classList.remove('hidden');
+                    emptyMsg.classList.remove('hidden'); // Show empty message
                     return;
                 }
-                emptyMsg.classList.add('hidden');
+                emptyMsg.classList.add('hidden'); // Hide empty message
+
+                // Render each creation in the gallery
                 userData.creations.forEach(creation => {
                     const card = document.createElement('div');
-                    card.className = `gallery-image-card ${creation.favorite ? 'favorite-glow' : ''}`;
+                    card.className = `gallery-image-card ${creation.favorite ? 'favorite-glow' : ''}`; // Add glow if favorited
                     card.innerHTML = `
                         <img src="${creation.imageData}" alt="${creation.title}" class="gallery-image">
                         <i class="fas fa-star favorite-star gallery-icon ${creation.favorite ? 'favorited' : ''}" data-id="${creation.id}"></i>
                         <i class="fas fa-trash delete-trash gallery-icon" data-id="${creation.id}"></i>
                     `;
                     grid.appendChild(card);
+
+                    // Event listener for opening image modal
                     card.querySelector('.gallery-image').addEventListener('click', () => {
                         document.getElementById('modal-image').src = creation.imageData;
                         document.getElementById('image-modal').classList.add('visible');
                     });
+                    // Event listener for toggling favorite status
                     card.querySelector('.favorite-star').addEventListener('click', (e) => {
-                        e.stopPropagation();
+                        e.stopPropagation(); // Prevent modal from opening
                         toggleFavorite(creation.id);
                     });
+                    // Event listener for deleting creation
                     card.querySelector('.delete-trash').addEventListener('click', (e) => {
-                        e.stopPropagation();
+                        e.stopPropagation(); // Prevent modal from opening
                         showConfirmationModal("¿Segura que quieres eliminar esta creación?", () => {
                             deleteCreation(creation.id);
                         });
                     });
                 });
             }
-            
+
             function toggleFavorite(id) {
                 const creation = userData.creations.find(c => c.id === id);
                 if (creation) {
-                    creation.favorite = !creation.favorite;
-                    saveUserData();
-                    renderGallery();
+                    creation.favorite = !creation.favorite; // Toggle favorite status
+                    saveUserData(); // Save changes
+                    renderGallery(); // Re-render gallery to reflect changes
                 }
             }
-            
+
             function deleteCreation(id) {
+                // Filter out the deleted creation
                 userData.creations = userData.creations.filter(c => c.id !== id);
-                saveUserData();
-                renderGallery();
+                saveUserData(); // Save changes
+                renderGallery(); // Re-render gallery
             }
 
             function showConfirmationModal(message, onConfirm) {
                 const modal = document.getElementById('confirmation-modal');
                 document.getElementById('confirmation-message').textContent = message;
 
+                // Clone and replace buttons to remove previous event listeners
                 const confirmBtn = document.getElementById('confirm-btn');
                 const cancelBtn = document.getElementById('cancel-btn');
 
@@ -1492,37 +1697,43 @@
                 const newCancelBtn = cancelBtn.cloneNode(true);
                 cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
 
+                // Add new event listeners
                 newConfirmBtn.addEventListener('click', function confirmHandler() {
-                    onConfirm();
-                    modal.classList.remove('visible');
-                    newConfirmBtn.removeEventListener('click', confirmHandler); 
-                    newCancelBtn.removeEventListener('click', cancelHandler); 
-                });
-                
-                newCancelBtn.addEventListener('click', function cancelHandler() {
-                    modal.classList.remove('visible');
-                    newConfirmBtn.removeEventListener('click', confirmHandler); 
-                    newCancelBtn.removeEventListener('click', cancelHandler); 
+                    onConfirm(); // Execute confirmation callback
+                    modal.classList.remove('visible'); // Hide modal
+                    // Clean up event listeners to prevent memory leaks
+                    newConfirmBtn.removeEventListener('click', confirmHandler);
+                    newCancelBtn.removeEventListener('click', cancelHandler);
                 });
 
-                modal.classList.add('visible');
+                newCancelBtn.addEventListener('click', function cancelHandler() {
+                    modal.classList.remove('visible'); // Hide modal
+                    // Clean up event listeners
+                    newConfirmBtn.removeEventListener('click', confirmHandler);
+                    newCancelBtn.removeEventListener('click', cancelHandler);
+                });
+
+                modal.classList.add('visible'); // Show modal
             }
 
             function setupImageModal() {
                 const modal = document.getElementById('image-modal');
                 const closeModalBtn = document.getElementById('modal-close-btn');
 
+                // Close modal when clicking outside the image
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) {
                         modal.classList.remove('visible');
                     }
                 });
 
+                // Close modal when clicking the close button
                 closeModalBtn.addEventListener('click', () => {
                     modal.classList.remove('visible');
                 });
             }
-            
+
+            // Initialize the application when the DOM is fully loaded
             initializeApp();
         });
     </script>
